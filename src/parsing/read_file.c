@@ -6,7 +6,7 @@
 /*   By: kmatjuhi <kmatjuhi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 10:51:21 by kmatjuhi          #+#    #+#             */
-/*   Updated: 2024/08/30 09:26:29 by kmatjuhi         ###   ########.fr       */
+/*   Updated: 2024/09/05 11:30:44 by kmatjuhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ char	*read_file(char *str)
 
 	sz = 0;
 	fd = safe_open(str);
-	while (read(fd, &c, 1) == 1)
+	while (safe_read(fd, &c, 1, false) == 1)
 		sz++;
 	close(fd);
 	fd = safe_open(str);
@@ -31,7 +31,7 @@ char	*read_file(char *str)
 		ft_putendl_fd(MALLOC_ERR, 2);
 		exit(1);
 	}
-	read(fd, map, sz);
+	safe_read(fd, map, sz, true);
 	close(fd);
 	map[sz] = '\0';
 	return (map);

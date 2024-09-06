@@ -39,7 +39,9 @@ SRC_DIR			=	./src
 SRCS			=	main.c \
 					read_file.c \
 					validate_map.c \
-					safe_func.c
+					safe_func.c \
+					arr_pop.c \
+					save_info.c
 
 OBJECTS			=	$(addprefix $(OBJ_DIR)/, $(SRCS:%.c=%.o))
 
@@ -52,7 +54,7 @@ all: $(NAME)
 
 $(NAME): $(OBJECTS) $(LIBFT) $(MLX42)
 	@echo "--------------------------------------------"
-	@$(CC) $(OBJECTS) $(CC_FLAGS) $(MLX42_FLAGS) $(LIBFT) -framework Cocoa -framework OpenGL -framework IOKit -o $(NAME)
+	@$(CC) $(OBJECTS) $(CC_FLAGS) $(MLX42_FLAGS) $(LIBFT) -o $(NAME)
 	@echo "[$(NAME)] $(B)Built target $(NAME)$(RC)"
 	@echo "--------------------------------------------"
 
