@@ -6,7 +6,7 @@
 /*   By: kmatjuhi <kmatjuhi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/05 09:39:45 by kmatjuhi          #+#    #+#             */
-/*   Updated: 2024/09/06 12:59:04 by kmatjuhi         ###   ########.fr       */
+/*   Updated: 2024/09/06 15:06:13 by kmatjuhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,16 +21,19 @@ static char **save_map_rm_elements(t_struct *game, char **content2d)
 	{
 		content2d = arr_pop(content2d, 0);
 		if (!content2d)
-		{
-			free(game->content);
-			free_elements(game->element);
-			exit(EXIT_FAILURE);
-		}
+			free_all(game, content2d);
 		i++;
 	}
 	return (content2d);
 }
-// handle strdup if it fails
+
+static void save_element(char **dst, const char *src, t_struct *game, char **content2d)
+{
+    *dst = ft_strdup(src);
+    if (!*dst)
+        free_all(game, content2d);
+}
+
 static void save_elements(t_struct *game, char **content2d)
 {
 	int	i;
@@ -39,17 +42,17 @@ static void save_elements(t_struct *game, char **content2d)
 	while (i < 6)
 	{
 		if (!ft_strncmp(content2d[i], "NO ", 3))
-			game->element.north = ft_strdup(content2d[i] + 3);
+			save_element(&game->element.north, content2d[i] + 3, game, content2d);
 		else if (!ft_strncmp(content2d[i], "SO ", 3))
-			game->element.south = ft_strdup(content2d[i] + 3);
+			save_element(&game->element.south, content2d[i] + 3, game, content2d);
 		else if (!ft_strncmp(content2d[i], "WE ", 3))
-			game->element.west = ft_strdup(content2d[i] + 3);
+			save_element(&game->element.west, content2d[i] + 3, game, content2d);
 		else if (!ft_strncmp(content2d[i], "EA ", 3))
-			game->element.east = ft_strdup(content2d[i] + 2);
+			save_element(&game->element.east, content2d[i] + 3, game, content2d);
 		else if (!ft_strncmp(content2d[i], "F ", 2))
-			game->element.floor = ft_strdup(content2d[i] + 2);
+			save_element(&game->element.floor, content2d[i] + 3, game, content2d);
 		else if (!ft_strncmp(content2d[i], "C ", 2))
-			game->element.ceiling = ft_strdup(content2d[i] + 2);
+			save_element(&game->element.ceiling, content2d[i] + 3, game, content2d);
 		i++;
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: kmatjuhi <kmatjuhi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 22:03:47 by kmatjuhi          #+#    #+#             */
-/*   Updated: 2024/09/05 09:29:59 by kmatjuhi         ###   ########.fr       */
+/*   Updated: 2024/09/06 13:53:36 by kmatjuhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,6 @@ static char	**remove_row(char **old_arr, char **new_arr, int row)
 			if (!new_arr[j])
 			{
 				free_arr(new_arr, j);
-				ft_free_arr(old_arr);
 				return (NULL);
 			}
 			j++;
@@ -69,10 +68,11 @@ char	**arr_pop(char **old_arr, int row)
 	if (!new_arr)
 	{
 		ft_putendl_fd(MALLOC_ERR, 2);
-		ft_free_arr(old_arr);
 		return (NULL);
 	}
 	new_arr = remove_row(old_arr, new_arr, row);
+	if (!new_arr)
+		return (NULL);
 	ft_free_arr(old_arr);
 	return (new_arr);
 }

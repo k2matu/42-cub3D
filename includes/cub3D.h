@@ -6,7 +6,7 @@
 /*   By: kmatjuhi <kmatjuhi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 22:03:35 by kmatjuhi          #+#    #+#             */
-/*   Updated: 2024/09/06 12:57:04 by kmatjuhi         ###   ########.fr       */
+/*   Updated: 2024/09/06 14:48:47 by kmatjuhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,11 +40,12 @@ typedef struct s_struct
 }	t_struct;
 
 // PARSE
-void	validate_file_content(int argc, char **argv, t_struct *game);
+void	parse(int argc, char **argv, t_struct *game);
 char	**save_file_content(t_struct *game, char *str);
 void	save_info(t_struct *game, char **content2d);
 char	**arr_pop(char **old_arr, int row);
-void	free_elements(t_element element);
+void	free_elements(t_element *element);
+void 	free_all(t_struct *game, char **arr);
 void	validate_map_content(char **map);
 
 // SAFE_FUNC

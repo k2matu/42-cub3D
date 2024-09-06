@@ -6,7 +6,7 @@
 #    By: kmatjuhi <kmatjuhi@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/05 15:16:43 by kmatjuhi          #+#    #+#              #
-#    Updated: 2024/09/06 12:58:32 by kmatjuhi         ###   ########.fr        #
+#    Updated: 2024/09/06 14:10:50 by kmatjuhi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@
 # COMPILATION
 ################################################################################
 CC				=	cc
-CC_FLAGS		=	-Wall -Wextra -Werror
+#CC_FLAGS		=	-Wall -Wextra -Werror
 DB_FLAGS		=	-g
 INCLUDE_FLAGS	=	-I $(INCLUDES) -I ./libft -I ./MLX42/include/MLX42
 MLX42_FLAGS		=	-Iinclude -lglfw -L"/Users/kale/.brew/opt/glfw/lib/"
@@ -37,11 +37,11 @@ OBJ_DIR			=	./obj
 SRC_DIR			=	./src
 
 SRCS			=	main.c \
-					validate_file_content.c \
+					parse.c \
 					save_file_content.c \
 					save_info.c \
 					safe_func.c \
-					free_elements.c \
+					free_func.c \
 					arr_pop.c \
 					validate_map_content.c
 
