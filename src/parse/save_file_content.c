@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   read_file.c                                        :+:      :+:    :+:   */
+/*   save_file_content.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kmatjuhi <kmatjuhi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 10:51:21 by kmatjuhi          #+#    #+#             */
-/*   Updated: 2024/09/05 11:30:44 by kmatjuhi         ###   ########.fr       */
+/*   Updated: 2024/09/06 12:34:48 by kmatjuhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ char	*read_file(char *str)
 	if (!map)
 	{
 		ft_putendl_fd(MALLOC_ERR, 2);
-		exit(1);
+		exit(EXIT_FAILURE);
 	}
 	safe_read(fd, map, sz, true);
 	close(fd);
@@ -37,18 +37,17 @@ char	*read_file(char *str)
 	return (map);
 }
 
-char	**read_to_map(char *str)
+char	**save_file_content(t_struct *game, char *str)
 {
-	char	*map_1d;
-	char	**map_2d;
-
-	map_1d = read_file(str);
-	map_2d = ft_split(map_1d, '\n');
-	free(map_1d);
-	if (!map_2d)
+	char	**content2d;
+	
+	game->content = read_file(str);
+	content2d = ft_split(game->content, '\n');
+	if (!content2d)
 	{
+		free(game->content);
 		ft_putendl_fd(MALLOC_ERR, 2);
-		exit(1);
+		exit(EXIT_FAILURE);
 	}
-	return (map_2d);
+	return (content2d);;
 }

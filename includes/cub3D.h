@@ -6,7 +6,7 @@
 /*   By: kmatjuhi <kmatjuhi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 22:03:35 by kmatjuhi          #+#    #+#             */
-/*   Updated: 2024/09/05 11:36:41 by kmatjuhi         ###   ########.fr       */
+/*   Updated: 2024/09/06 12:57:04 by kmatjuhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 
 # define SIZE = 35
 
-typedef struct s_texture
+typedef struct s_element
 {
 	char	*north;
 	char	*south;
@@ -30,21 +30,24 @@ typedef struct s_texture
 	char	*east;
 	char	*floor;
 	char	*ceiling;
-}	t_texture;
+}	t_element;
 
 typedef struct s_struct
 {
 	char		**map;
-	t_texture	texture;
+	char		*content;
+	t_element	element;
 }	t_struct;
 
-void	validate_map(int argc, char **argv, t_struct *game);
-char	**read_to_map(char *str);
+// PARSE
+void	validate_file_content(int argc, char **argv, t_struct *game);
+char	**save_file_content(t_struct *game, char *str);
+void	save_info(t_struct *game, char **content2d);
 char	**arr_pop(char **old_arr, int row);
-void	save_info(t_struct *game);
-void	free_texture(t_texture texture);
+void	free_elements(t_element element);
+void	validate_map_content(char **map);
 
-// SAFE FUNCTIONS
+// SAFE_FUNC
 int		safe_open(char *str);
 ssize_t	safe_read(int fd, char *dest, ssize_t size, bool is_malloced);
 

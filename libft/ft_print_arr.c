@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_two_d_arr.c                               :+:      :+:    :+:   */
+/*   ft_print_arr.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kmatjuhi <kmatjuhi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/19 11:12:49 by kmatjuhi          #+#    #+#             */
-/*   Updated: 2024/08/26 21:57:06 by kmatjuhi         ###   ########.fr       */
+/*   Updated: 2024/09/06 12:24:59 by kmatjuhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_print_two_d_arr(char **arr)
+void	ft_print_arr(char **arr)
 {
 	int	i;
 	int	j;

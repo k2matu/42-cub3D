@@ -6,7 +6,7 @@
 /*   By: kmatjuhi <kmatjuhi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/30 08:27:12 by kmatjuhi          #+#    #+#             */
-/*   Updated: 2024/09/04 21:44:17 by kmatjuhi         ###   ########.fr       */
+/*   Updated: 2024/09/06 11:58:19 by kmatjuhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	safe_open(char *str)
 	if (fd == -1)
 	{
 		perror("Open file error");
-		exit(1);
+		exit(EXIT_FAILURE);
 	}
 	return (fd);
 }
@@ -39,7 +39,7 @@ ssize_t	safe_read(int fd, char *dest, ssize_t size, bool is_malloced)
 		close(fd);
 		if (is_malloced)
 			free(dest);
-		exit(1);
+		exit(EXIT_FAILURE);
 	}
 	return (bytes_read);
 }

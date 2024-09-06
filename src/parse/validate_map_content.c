@@ -1,21 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   validate_map_content.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kmatjuhi <kmatjuhi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/05 15:31:32 by kmatjuhi          #+#    #+#             */
-/*   Updated: 2024/09/06 12:03:50 by kmatjuhi         ###   ########.fr       */
+/*   Created: 2024/09/06 11:38:57 by kmatjuhi          #+#    #+#             */
+/*   Updated: 2024/09/06 12:27:20 by kmatjuhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-int	main(int argc, char **argv)
+void validate_map_content(char **map2d)
 {
-	static t_struct	game;
-
-	validate_file_content(argc, argv, &game);
-	return (0);
+    ft_print_arr(map2d);
+    
 }

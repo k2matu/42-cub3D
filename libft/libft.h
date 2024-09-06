@@ -6,7 +6,7 @@
 /*   By: kmatjuhi <kmatjuhi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 09:35:59 by kale              #+#    #+#             */
-/*   Updated: 2024/08/30 07:49:06 by kmatjuhi         ###   ########.fr       */
+/*   Updated: 2024/09/06 12:26:07 by kmatjuhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ int		ft_tolower(int c);
 void	ft_free_arr(char **value);
 int		ft_strrcmp(char *s1, char *s2);
 int		ft_match(char *str, char *set);
-void	ft_print_two_d_arr(char **arr);
+void	ft_print_arr(char **arr);
 int		ft_strrncmp(const char *s1, const char *s2, size_t n);
 
 #endif

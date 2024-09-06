@@ -6,7 +6,7 @@
 #    By: kmatjuhi <kmatjuhi@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/05 15:16:43 by kmatjuhi          #+#    #+#              #
-#    Updated: 2024/09/01 21:16:50 by kmatjuhi         ###   ########.fr        #
+#    Updated: 2024/09/06 12:58:32 by kmatjuhi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,30 +37,32 @@ OBJ_DIR			=	./obj
 SRC_DIR			=	./src
 
 SRCS			=	main.c \
-					read_file.c \
-					validate_map.c \
+					validate_file_content.c \
+					save_file_content.c \
+					save_info.c \
 					safe_func.c \
+					free_elements.c \
 					arr_pop.c \
-					save_info.c
+					validate_map_content.c
 
 OBJECTS			=	$(addprefix $(OBJ_DIR)/, $(SRCS:%.c=%.o))
 
 ################################################################################
 # RULES
 ################################################################################
-vpath %.c $(SRC_DIR) $(SRC_DIR)/parsing $(SRC_DIR)/safe_func
+vpath %.c $(SRC_DIR) $(SRC_DIR)/parse $(SRC_DIR)/safe_func
 
 all: $(NAME)
 
 $(NAME): $(OBJECTS) $(LIBFT) $(MLX42)
 	@echo "--------------------------------------------"
-	@$(CC) $(OBJECTS) $(CC_FLAGS) $(MLX42_FLAGS) $(LIBFT) -o $(NAME)
+	@$(CC) $(OBJECTS) $(CC_FLAGS) $(MLX42_FLAGS) $(DB_FLAGS) $(LIBFT) -o $(NAME)
 	@echo "[$(NAME)] $(B)Built target $(NAME)$(RC)"
 	@echo "--------------------------------------------"
 
 $(OBJ_DIR)/%.o: %.c
 	@mkdir -p $(@D)
-	$(CC) $(CC_FLAGS) $(INCLUDE_FLAGS) -c $< -o $@
+	$(CC) $(CC_FLAGS) $(DB_FLAGS) $(INCLUDE_FLAGS) -c $< -o $@
 	@echo "Compiled: $<"
 
 $(LIBFT): 
