@@ -6,7 +6,7 @@
 /*   By: kmatjuhi <kmatjuhi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 10:51:21 by kmatjuhi          #+#    #+#             */
-/*   Updated: 2024/09/06 14:13:13 by kmatjuhi         ###   ########.fr       */
+/*   Updated: 2024/09/07 07:23:28 by kmatjuhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ char	*read_file(char *str)
 char	**save_file_content(t_struct *game, char *str)
 {
 	char	**content2d;
-	
+
 	game->content = read_file(str);
 	content2d = ft_split(game->content, '\n');
 	if (!content2d)
