@@ -6,7 +6,7 @@
 /*   By: kmatjuhi <kmatjuhi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/18 10:25:12 by kmatjuhi          #+#    #+#             */
-/*   Updated: 2024/09/07 07:53:33 by kmatjuhi         ###   ########.fr       */
+/*   Updated: 2024/09/09 11:23:07 by kmatjuhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,8 @@ void	parse(int argc, char **argv, t_struct *game)
 	}
 	content2d = save_file_content(game, argv[1]);
 	save_info(game, content2d);
-	validate_map_content(game->map);
+	validate_elems(game);
+	validate_map_content(game, game->map);
 
 	free(game->content);
 	ft_free_arr(game->map);
