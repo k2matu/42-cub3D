@@ -6,7 +6,7 @@
 /*   By: kmatjuhi <kmatjuhi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/27 06:53:37 by kmatjuhi          #+#    #+#             */
-/*   Updated: 2024/03/13 13:54:15 by kmatjuhi         ###   ########.fr       */
+/*   Updated: 2024/09/09 10:20:28 by kmatjuhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ static int	last_pos(char const *s1, char const *set)
 	return (i);
 }
 
-char	*ft_strtrim(char const *s1, char const *set)
+char	*ft_strtrim(char *s1, char const *set)
 {
 	int		first;
 	int		last;
@@ -68,5 +68,6 @@ char	*ft_strtrim(char const *s1, char const *set)
 		return (dest);
 	}
 	dest = ft_substr(s1, first, len);
+	free(s1);
 	return (dest);
 }
