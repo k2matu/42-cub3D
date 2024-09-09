@@ -6,7 +6,7 @@
 /*   By: kmatjuhi <kmatjuhi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/06 11:38:57 by kmatjuhi          #+#    #+#             */
-/*   Updated: 2024/09/09 12:23:18 by kmatjuhi         ###   ########.fr       */
+/*   Updated: 2024/09/09 12:27:39 by kmatjuhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,16 +24,17 @@ static int save_player_pos(t_struct *game, char *map, int row, int player_count)
             player_count++;
             game->player.pos_y = row;
             game->player.pos_x = col;
+            game->player.direction = map[col];
         }
         col++;
     }
     return (player_count);
 }
 
-static bool surrounded_by_walls(char **map)
-{
+// static bool surrounded_by_walls(char **map)
+// {
     
-}
+// }
 
 void validate_map(t_struct *game, char **map)
 {
@@ -52,6 +53,7 @@ void validate_map(t_struct *game, char **map)
     }
 	if (player_count != 1)
         clean_exit(game, ERR_PLAYER_COUNT, map);
-    if (!surrounded_by_walls(map));
-        clean_exit(game, ERR_MAP_INVALID, map);
+    printf("direction is {%c}\n", game->player.direction);
+    // if (!surrounded_by_walls(map));
+    //     clean_exit(game, ERR_MAP_INVALID, map);
 }
