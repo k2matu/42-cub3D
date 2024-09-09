@@ -6,7 +6,7 @@
 /*   By: kmatjuhi <kmatjuhi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 22:03:35 by kmatjuhi          #+#    #+#             */
-/*   Updated: 2024/09/09 11:22:40 by kmatjuhi         ###   ########.fr       */
+/*   Updated: 2024/09/09 11:45:10 by kmatjuhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,19 @@ typedef struct s_element
 	char	*ceiling;
 }	t_element;
 
+typedef struct s_player
+{
+	int		pos_y;
+	int		pos_x;
+	char	direction;
+}	t_player;
+
 typedef struct s_struct
 {
 	char		**map;
 	char		*content;
 	t_element	elem;
+	t_player	player;
 }	t_struct;
 
 /* free_func.c */
@@ -49,7 +57,7 @@ char	**save_file_content(t_struct *game, char *str);
 void	save_info(t_struct *game, char **content2d);
 char	**arr_pop(char **old_arr, int row);
 void	validate_elems(t_struct *game);
-void	validate_map_content(t_struct *game, char **map);
+void	validate_map(t_struct *game, char **map);
 
 /* safe_func */
 int		safe_open(char *str);

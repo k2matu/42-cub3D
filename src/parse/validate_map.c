@@ -6,49 +6,51 @@
 /*   By: kmatjuhi <kmatjuhi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/06 11:38:57 by kmatjuhi          #+#    #+#             */
-/*   Updated: 2024/09/09 11:25:15 by kmatjuhi         ###   ########.fr       */
+/*   Updated: 2024/09/09 12:09:18 by kmatjuhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-// static void	check_components(char **map, t_struct *game)
-// {
-// 	int	i;
-// 	int	j;
+static int save_player_pos(t_struct *game, char *map, int row, int player_count)
+{
+	int	col;
 
-// 	i = -1;
-// 	j = 0;
-// 	while (map[++i] != NULL)
-// 	{
-// 		while (map[i][j])
-// 		{
-// 			if (map[i][j] == 'C')
-// 				game->comp.collectible++;
-// 			else if (map[i][j] == 'E')
-// 				game->comp.exit++;
-// 			else if (map[i][j] == 'P')
-// 				game->comp.player++;
-// 			j++;
-// 		}
-// 		j = 0;
-// 	}
-// 	if (game->comp.collectible < 1 || game->comp.player != 1 \
-// 	|| game->comp.exit != 1)
-// 		ft_error(NULL, "Map must contain 1 exit, \
-// 		1 startposition & collectible", map);
-// }
+	col = 0;
+    while (map[col])
+    {
+        if (map[col] == 'N' || map[col] == 'S' || map[col] == 'E' || map[col] == 'W')
+        {
+            player_count++;
+            game->player.pos_y = row;
+            game->player.pos_x = col;
+        }
+        col++;
+    }
+    return (player_count);
+}
 
-void validate_map_content(t_struct *game, char **map)
+static void check_surrounding_walls(char **map)
+{
+    
+}
+
+void validate_map(t_struct *game, char **map)
 {
     ft_print_arr(map);
     int row;
+    int player_count;
 
     row = 0;
+    player_count = 0;
     while (map[row])
     {
-        if (ft_match(map[row], "01NSEW ") != 1)
+        if (!ft_match(map[row], "01NSEW "))
 		    clean_exit(game, ERR_MAP_CHAR, map);
+        player_count = save_player_pos(game, map[row], row, player_count);
         row++;
     }
+	if (player_count != 1)
+        clean_exit(game, ERR_PLAYER_COUNT, map);
+    check_surrounding_walls(map);
 }
