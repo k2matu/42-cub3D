@@ -6,7 +6,7 @@
 /*   By: kmatjuhi <kmatjuhi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/30 09:16:31 by kmatjuhi          #+#    #+#             */
-/*   Updated: 2024/09/09 12:03:22 by kmatjuhi         ###   ########.fr       */
+/*   Updated: 2024/09/09 12:23:06 by kmatjuhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # define ERR_ELEM_INVALID "Error\nInvalid element(s)"
 # define ERR_MAP_CHAR "Error\nInvalid map character(s)"
 # define ERR_PLAYER_COUNT "Error\nInvalid player count"
+# define ERR_MAP_INVALID "Error\nInvalid map"
 # define ERR_RGB_VAL "Error\nInvalid RGB value (min: 0, max: 255)"
 
 #endif
