@@ -6,7 +6,7 @@
 /*   By: kmatjuhi <kmatjuhi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 10:51:21 by kmatjuhi          #+#    #+#             */
-/*   Updated: 2024/09/07 07:23:28 by kmatjuhi         ###   ########.fr       */
+/*   Updated: 2024/09/07 07:54:15 by kmatjuhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ char	*read_file(char *str)
 	map = malloc(sizeof(char) * (sz + 1));
 	if (!map)
 	{
-		ft_putendl_fd(MALLOC_ERR, 2);
+		ft_putendl_fd(ERR_MALLOC, 2);
 		exit(EXIT_FAILURE);
 	}
 	safe_read(fd, map, sz, true);
@@ -46,7 +46,7 @@ char	**save_file_content(t_struct *game, char *str)
 	if (!content2d)
 	{
 		free(game->content);
-		ft_putendl_fd(MALLOC_ERR, 2);
+		ft_putendl_fd(ERR_MALLOC, 2);
 		exit(EXIT_FAILURE);
 	}
 	return (content2d);;

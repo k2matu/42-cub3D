@@ -6,7 +6,7 @@
 /*   By: kmatjuhi <kmatjuhi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 22:03:47 by kmatjuhi          #+#    #+#             */
-/*   Updated: 2024/09/06 13:53:36 by kmatjuhi         ###   ########.fr       */
+/*   Updated: 2024/09/07 07:57:57 by kmatjuhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ char	**arr_pop(char **old_arr, int row)
 	new_arr = malloc(rows * sizeof(char *));
 	if (!new_arr)
 	{
-		ft_putendl_fd(MALLOC_ERR, 2);
+		ft_putendl_fd(ERR_MALLOC, 2);
 		return (NULL);
 	}
 	new_arr = remove_row(old_arr, new_arr, row);

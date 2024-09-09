@@ -6,7 +6,7 @@
 /*   By: kmatjuhi <kmatjuhi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/05 09:39:45 by kmatjuhi          #+#    #+#             */
-/*   Updated: 2024/09/07 07:32:02 by kmatjuhi         ###   ########.fr       */
+/*   Updated: 2024/09/07 08:35:47 by kmatjuhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static char	**save_map_rm_elems(t_struct *game, char **content2d)
 	{
 		content2d = arr_pop(content2d, 0);
 		if (!content2d)
-			clean_exit(game, content2d);
+			clean_exit(game, ERR_MALLOC, content2d);
 		i++;
 	}
 	return (content2d);
@@ -29,9 +29,11 @@ static char	**save_map_rm_elems(t_struct *game, char **content2d)
 
 static void	save_elem(char **dst, char *src, t_struct *game, char **content2d)
 {
+	while (*src == ' ')
+		src++;
 	*dst = ft_strdup(src);
 	if (!*dst)
-		clean_exit(game, content2d);
+		clean_exit(game, ERR_MALLOC, content2d);
 }
 
 static void	save_elems(t_struct *game, char **content2d)
@@ -50,9 +52,9 @@ static void	save_elems(t_struct *game, char **content2d)
 		else if (!ft_strncmp(content2d[i], "EA ", 3))
 			save_elem(&game->elem.east, content2d[i] + 3, game, content2d);
 		else if (!ft_strncmp(content2d[i], "F ", 2))
-			save_elem(&game->elem.floor, content2d[i] + 3, game, content2d);
+			save_elem(&game->elem.floor, content2d[i] + 2, game, content2d);
 		else if (!ft_strncmp(content2d[i], "C ", 2))
-			save_elem(&game->elem.ceiling, content2d[i] + 3, game, content2d);
+			save_elem(&game->elem.ceiling, content2d[i] + 2, game, content2d);
 		i++;
 	}
 }
@@ -61,5 +63,5 @@ void	save_info(t_struct *game, char **content2d)
 {
 	save_elems(game, content2d);
 	game->map = save_map_rm_elems(game, content2d);
-	// check elems(game->elem);
+	validate_elems(game);
 }

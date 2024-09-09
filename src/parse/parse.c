@@ -6,7 +6,7 @@
 /*   By: kmatjuhi <kmatjuhi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/18 10:25:12 by kmatjuhi          #+#    #+#             */
-/*   Updated: 2024/09/07 07:25:32 by kmatjuhi         ###   ########.fr       */
+/*   Updated: 2024/09/07 07:53:33 by kmatjuhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	parse(int argc, char **argv, t_struct *game)
 
 	if (argc != 2 || ft_strrncmp(argv[1], ".cub", 4) != 0 || ft_strlen(argv[1]) < 5)
 	{
-		ft_putendl_fd(INVALID_MAP_EXTENSTION, 2);
+		ft_putendl_fd(ERR_FILE_NOT_CUB, 2);
 		exit(EXIT_FAILURE);
 	}
 	content2d = save_file_content(game, argv[1]);

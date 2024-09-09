@@ -6,7 +6,7 @@
 #    By: kmatjuhi <kmatjuhi@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/05 15:16:43 by kmatjuhi          #+#    #+#              #
-#    Updated: 2024/09/06 14:10:50 by kmatjuhi         ###   ########.fr        #
+#    Updated: 2024/09/07 08:18:05 by kmatjuhi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,7 +43,8 @@ SRCS			=	main.c \
 					safe_func.c \
 					free_func.c \
 					arr_pop.c \
-					validate_map_content.c
+					validate_map.c \
+					validate_elems.c
 
 OBJECTS			=	$(addprefix $(OBJ_DIR)/, $(SRCS:%.c=%.o))
 

@@ -6,7 +6,7 @@
 /*   By: kmatjuhi <kmatjuhi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/06 12:16:03 by kmatjuhi          #+#    #+#             */
-/*   Updated: 2024/09/07 07:29:57 by kmatjuhi         ###   ########.fr       */
+/*   Updated: 2024/09/07 07:49:19 by kmatjuhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,11 @@ void	free_elements(t_element *elem)
 		free(elem->ceiling);
 }
 
-void	clean_exit(t_struct *game, char **arr)
+void	clean_exit(t_struct *game, char *msg, char **arr)
 {
 	free(game->content);
 	ft_free_arr(arr);
 	free_elements(&(game->elem));
-	ft_putendl_fd(MALLOC_ERR, 2);
+	ft_putendl_fd(msg, 2);
 	exit(EXIT_FAILURE);
 }
