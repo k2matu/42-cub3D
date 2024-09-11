@@ -1,32 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse.c                                            :+:      :+:    :+:   */
+/*   flood_fill.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kmatjuhi <kmatjuhi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/18 10:25:12 by kmatjuhi          #+#    #+#             */
-/*   Updated: 2024/09/11 13:20:27 by kmatjuhi         ###   ########.fr       */
+/*   Created: 2024/03/18 10:33:29 by kmatjuhi          #+#    #+#             */
+/*   Updated: 2024/09/11 13:19:45 by kmatjuhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-void	parse(int argc, char **argv, t_struct *game)
+void	flood_fill(char **map, int x, int y, int row)
 {
-	char	**content2d;
-
-	if (argc != 2 || ft_strrncmp(argv[1], ".cub", 4) != 0 || \
-	ft_strlen(argv[1]) < 5)
-	{
-		ft_putendl_fd(ERR_FILE_NOT_CUB, 2);
-		exit(EXIT_FAILURE);
-	}
-	content2d = save_file_content(game, argv[1]);
-	save_info(game, content2d);
-	validate_elems(game);
-	validate_map(game, game->map);
-	free(game->content);
-	ft_free_arr(game->map);
-	free_elements(&(game->elem));
+	if (y < 0 || y >= row || x < 0 || x >= (int)ft_strlen(map[y]))
+		return ;
+	if (!map[y][x] || map[y][x] == '1' || map[y][x] == 'X')
+		return ;
+	map[y][x] = 'X';
+	flood_fill(map, x + 1, y, row);
+	flood_fill(map, x - 1, y, row);
+	flood_fill(map, x, y + 1, row);
+	flood_fill(map, x, y - 1, row);
+	return ;
 }

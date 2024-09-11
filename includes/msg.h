@@ -6,12 +6,12 @@
 /*   By: kmatjuhi <kmatjuhi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/30 09:16:31 by kmatjuhi          #+#    #+#             */
-/*   Updated: 2024/09/09 12:23:06 by kmatjuhi         ###   ########.fr       */
+/*   Updated: 2024/09/09 14:46:35 by kmatjuhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MSG
-# define MSG
+#ifndef MSG_H
+# define MSG_H
 
 # define ERR_MALLOC "Malloc failed"
 # define ERR_FILE_NOT_CUB "Error\nNot a .cub file"

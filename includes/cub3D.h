@@ -6,7 +6,7 @@
 /*   By: kmatjuhi <kmatjuhi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 22:03:35 by kmatjuhi          #+#    #+#             */
-/*   Updated: 2024/09/09 11:45:10 by kmatjuhi         ###   ########.fr       */
+/*   Updated: 2024/09/11 13:07:05 by kmatjuhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,8 @@ void	save_info(t_struct *game, char **content2d);
 char	**arr_pop(char **old_arr, int row);
 void	validate_elems(t_struct *game);
 void	validate_map(t_struct *game, char **map);
+void	flood_fill(char **map, int x, int y, int row);
+char	**ft_arrdup(char **arr);
 
 /* safe_func */
 int		safe_open(char *str);

@@ -6,7 +6,7 @@
 /*   By: kmatjuhi <kmatjuhi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/07 08:10:06 by kmatjuhi          #+#    #+#             */
-/*   Updated: 2024/09/09 10:57:57 by kmatjuhi         ###   ########.fr       */
+/*   Updated: 2024/09/09 14:48:47 by kmatjuhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static void	check_xpm_files(t_struct *game)
 		clean_exit(game, ERR_ELEM_INVALID, game->map);
 }
 
-static bool is_num(char *str)
+static bool	is_num(char *str)
 {
 	while (*str)
 	{
@@ -58,7 +58,6 @@ static void	check_color_range(t_struct *game, char **arr)
 		ft_free_arr(arr);
 		clean_exit(game, ERR_RGB_VAL, game->map);
 	}
-		
 }
 
 static void	check_color(t_struct *game, char *elem)

@@ -6,7 +6,7 @@
 /*   By: kmatjuhi <kmatjuhi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 10:51:21 by kmatjuhi          #+#    #+#             */
-/*   Updated: 2024/09/07 07:54:15 by kmatjuhi         ###   ########.fr       */
+/*   Updated: 2024/09/09 14:48:23 by kmatjuhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,5 +49,5 @@ char	**save_file_content(t_struct *game, char *str)
 		ft_putendl_fd(ERR_MALLOC, 2);
 		exit(EXIT_FAILURE);
 	}
-	return (content2d);;
+	return (content2d);
 }
