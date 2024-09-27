@@ -6,7 +6,7 @@
 #    By: kmatjuhi <kmatjuhi@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/05 15:16:43 by kmatjuhi          #+#    #+#              #
-#    Updated: 2024/09/11 13:16:25 by kmatjuhi         ###   ########.fr        #
+#    Updated: 2024/09/26 14:23:24 by kmatjuhi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,8 +19,8 @@
 CC				=	cc
 CC_FLAGS		=	-Wall -Wextra -Werror
 DB_FLAGS		=	-g
-INCLUDE_FLAGS	=	-I $(INCLUDES) -I ./libft -I ./MLX42/include/MLX42
-MLX42_FLAGS		=	-Iinclude -lglfw -L"/Users/kale/.brew/opt/glfw/lib/"
+INCLUDE_FLAGS	=	-I $(INCLUDES) -I ./libft -I ./MLX42/include/MLX42 -I ./usr/include/GLFW
+MLX42_FLAGS		=	-Iinclude -lglfw -L"/usr/lib/aarch64-linux-gnu"
 
 ################################################################################
 # LIBRARIES
@@ -41,12 +41,13 @@ SRCS			=	main.c \
 					save_file_content.c \
 					save_info.c \
 					safe_func.c \
+					safe_mlx.c \
 					free_func.c \
 					arr_pop.c \
 					validate_map.c \
 					validate_elems.c \
 					flood_fill.c \
-					ft_arrdup.c
+					ft_arrdup.c 
 
 OBJECTS			=	$(addprefix $(OBJ_DIR)/, $(SRCS:%.c=%.o))
 
@@ -59,7 +60,7 @@ all: $(NAME)
 
 $(NAME): $(OBJECTS) $(LIBFT) $(MLX42)
 	@echo "--------------------------------------------"
-	@$(CC) $(OBJECTS) $(CC_FLAGS) $(MLX42_FLAGS) $(DB_FLAGS) $(LIBFT) -o $(NAME)
+	@$(CC) $(OBJECTS) $(CC_FLAGS) $(INCLUDE_FLAGS) $(DB_FLAGS) $(LIBFT) $(MLX42) -o $(NAME) -lglfw
 	@echo "[$(NAME)] $(B)Built target $(NAME)$(RC)"
 	@echo "--------------------------------------------"
 

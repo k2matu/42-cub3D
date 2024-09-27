@@ -6,7 +6,7 @@
 /*   By: kmatjuhi <kmatjuhi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/30 09:16:31 by kmatjuhi          #+#    #+#             */
-/*   Updated: 2024/09/09 14:46:35 by kmatjuhi         ###   ########.fr       */
+/*   Updated: 2024/09/26 14:21:33 by kmatjuhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,5 +22,7 @@
 # define ERR_PLAYER_COUNT "Error\nInvalid player count"
 # define ERR_MAP_INVALID "Error\nInvalid map"
 # define ERR_RGB_VAL "Error\nInvalid RGB value (min: 0, max: 255)"
+
+# define ERR_MLX "Error\nFailed to initialize MLX42"
 
 #endif

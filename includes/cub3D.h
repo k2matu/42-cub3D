@@ -6,7 +6,7 @@
 /*   By: kmatjuhi <kmatjuhi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 22:03:35 by kmatjuhi          #+#    #+#             */
-/*   Updated: 2024/09/11 13:07:05 by kmatjuhi         ###   ########.fr       */
+/*   Updated: 2024/09/26 21:19:51 by kmatjuhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,9 @@
 # include "MLX42.h"
 # include "msg.h"
 
-# define SIZE = 35
+# define S_W 1900
+# define S_H 1000
+# define TILE_SIZE 30
 
 typedef struct s_element
 {
@@ -39,12 +41,22 @@ typedef struct s_player
 	char	direction;
 }	t_player;
 
+typedef struct s_player_px {
+	int		plyr_px_y;
+	int		plyr_px_x;
+	
+}	t_player_px;
+
 typedef struct s_struct
 {
 	char		**map;
 	char		*content;
+	int			row;
+	int			col;
 	t_element	elem;
 	t_player	player;
+	t_player_px	plyr_px;
+	mlx_t		*mlx;
 }	t_struct;
 
 /* free_func.c */
@@ -64,5 +76,9 @@ char	**ft_arrdup(char **arr);
 /* safe_func */
 int		safe_open(char *str);
 ssize_t	safe_read(int fd, char *dest, ssize_t size, bool is_malloced);
+
+/* safe_mlx */
+mlx_t	*safe_mlx_init(t_struct *game);
+void	safe_mlx_terminate(t_struct *game);
 
 #endif

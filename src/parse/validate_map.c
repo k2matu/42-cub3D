@@ -6,7 +6,7 @@
 /*   By: kmatjuhi <kmatjuhi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/06 11:38:57 by kmatjuhi          #+#    #+#             */
-/*   Updated: 2024/09/11 13:19:55 by kmatjuhi         ###   ########.fr       */
+/*   Updated: 2024/09/26 15:17:04 by kmatjuhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ static int	save_player_pos(t_struct *game, char *map, int row, int plr_count)
 		}
 		col++;
 	}
+	if (game->col < col)
+		game->col = col;
 	return (plr_count);
 }
 
@@ -93,6 +95,7 @@ void	validate_map(t_struct *game, char **map)
 
 	row = 0;
 	player_count = 0;
+	game->col = 0;
 	while (map[row])
 	{
 		if (!ft_match(map[row], "01NSEW "))
@@ -100,6 +103,7 @@ void	validate_map(t_struct *game, char **map)
 		player_count = save_player_pos(game, map[row], row, player_count);
 		row++;
 	}
+	game->row = row;
 	if (player_count != 1)
 		clean_exit(game, ERR_PLAYER_COUNT, map);
 	map_copy = ft_arrdup(map);
