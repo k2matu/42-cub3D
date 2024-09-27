@@ -6,7 +6,7 @@
 /*   By: kmatjuhi <kmatjuhi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 22:03:35 by kmatjuhi          #+#    #+#             */
-/*   Updated: 2024/09/26 21:19:51 by kmatjuhi         ###   ########.fr       */
+/*   Updated: 2024/09/27 21:16:58 by kmatjuhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,12 @@
 # include <stdbool.h>
 # include "MLX42.h"
 # include "msg.h"
+# include <math.h>
 
 # define S_W 1900
 # define S_H 1000
 # define TILE_SIZE 30
+# define FOV 60
 
 typedef struct s_element
 {
@@ -42,21 +44,31 @@ typedef struct s_player
 }	t_player;
 
 typedef struct s_player_px {
-	int		plyr_px_y;
-	int		plyr_px_x;
-	
+	int		pos_px_y;
+	int		pos_px_x;
+	double	angle;
+	float	fov_radians;
 }	t_player_px;
+
+typedef struct s_ray	//the ray structure
+{
+	double	ray_ngl;	// ray angle
+	double	distance;	// distance to the wall
+	int		flag;		// flag for the wall
+}	t_ray;
 
 typedef struct s_struct
 {
-	char		**map;
-	char		*content;
-	int			row;
-	int			col;
-	t_element	elem;
-	t_player	player;
-	t_player_px	plyr_px;
-	mlx_t		*mlx;
+	char			**map;
+	char			*content;
+	int				row;
+	int				col;
+	t_element		elem;
+	t_player		player;
+	t_player_px		*plyr_px;
+	mlx_t			*mlx;
+	mlx_image_t		*img;
+	t_ray			*ray;
 }	t_struct;
 
 /* free_func.c */
@@ -80,5 +92,8 @@ ssize_t	safe_read(int fd, char *dest, ssize_t size, bool is_malloced);
 /* safe_mlx */
 mlx_t	*safe_mlx_init(t_struct *game);
 void	safe_mlx_terminate(t_struct *game);
+
+void	cast_rays(t_struct *mlx);
+float	nor_angle(float angle);
 
 #endif

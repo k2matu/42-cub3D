@@ -6,7 +6,7 @@
 /*   By: kmatjuhi <kmatjuhi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 14:13:46 by kmatjuhi          #+#    #+#             */
-/*   Updated: 2024/09/26 15:20:59 by kmatjuhi         ###   ########.fr       */
+/*   Updated: 2024/09/27 21:44:31 by kmatjuhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,4 +32,6 @@ void	safe_mlx_terminate(t_struct *game) {
 	free(game->content);
 	ft_free_arr(game->map);
 	free_elements(&(game->elem));
+	if (game->plyr_px)
+		free(game->plyr_px);
 }

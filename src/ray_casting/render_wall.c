@@ -1,30 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse.c                                            :+:      :+:    :+:   */
+/*   render_wall.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kmatjuhi <kmatjuhi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/18 10:25:12 by kmatjuhi          #+#    #+#             */
-/*   Updated: 2024/09/27 21:14:54 by kmatjuhi         ###   ########.fr       */
+/*   Created: 2024/09/27 14:23:48 by kmatjuhi          #+#    #+#             */
+/*   Updated: 2024/09/27 14:23:51 by kmatjuhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3D.h"
-
-void	parse(int argc, char **argv, t_struct *game)
-{
-	char	**content2d;
-
-	if (argc != 2 || ft_strrncmp(argv[1], ".cub", 4) != 0 || \
-	ft_strlen(argv[1]) < 5)
-	{
-		ft_putendl_fd(ERR_FILE_NOT_CUB, 2);
-		free(game);
-		exit(EXIT_FAILURE);
-	}
-	content2d = save_file_content(game, argv[1]);
-	save_info(game, content2d);
-	validate_elems(game);
-	validate_map(game, game->map);
-}
