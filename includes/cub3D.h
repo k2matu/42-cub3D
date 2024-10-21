@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: halgordzibari <halgordzibari@student.42    +#+  +:+       +#+        */
+/*   By: hzibari <hzibari@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 22:03:35 by kmatjuhi          #+#    #+#             */
-/*   Updated: 2024/10/18 19:13:59 by halgordziba      ###   ########.fr       */
+/*   Updated: 2024/10/21 15:58:03 by hzibari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@
 # define S_H 1000
 # define TILE_SIZE 30
 # define FOV 60
+# define M_PI 3.14159265358979323846
 
 typedef struct s_element
 {
@@ -42,13 +43,6 @@ typedef struct s_player
 	int		pos_x;
 	char	direction;
 }	t_player;
-
-typedef struct s_player_px {
-	int		pos_px_y;
-	int		pos_px_x;
-	double	angle;
-	float	fov_radians;
-}	t_player_px;
 
 typedef struct s_ray
 {
@@ -71,7 +65,6 @@ typedef struct s_struct
 	int				col;
 	t_element		elem;
 	t_player		player;
-	t_player_px		*plyr_px;
 	mlx_t			*mlx;
 	mlx_image_t		*img;
 	t_ray			*ray;
@@ -100,12 +93,15 @@ mlx_t	*safe_mlx_init(t_struct *game);
 void	safe_mlx_terminate(t_struct *game);
 
 
-float	nor_angle(float angle);
+double	nor_angle(float angle);
 
 /* ray funtions */
 void	raycasting(t_struct *game);
 void	fix_inters_for_y(t_struct *game, double *y_inter, double *x_inter, double *x_step, double *y_step);
 void	fix_inters_for_x(t_struct *game, double *y_inter, double *x_inter, double *x_step, double *y_step);
 int		check_wall_hit(t_struct *game, double x_inter, double y_inter);
+
+/*for the map to see rays*/
+void mlx_draw_line(mlx_image_t* img, int x0, int y0, int x1, int y1, uint32_t color);
 
 #endif

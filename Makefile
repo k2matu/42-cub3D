@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: halgordzibari <halgordzibari@student.42    +#+  +:+       +#+         #
+#    By: hzibari <hzibari@student.hive.fi>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/05 15:16:43 by kmatjuhi          #+#    #+#              #
-#    Updated: 2024/10/18 19:27:02 by halgordziba      ###   ########.fr        #
+#    Updated: 2024/10/21 14:12:25 by hzibari          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ CC				=	cc
 # CC_FLAGS		=	-Wall -Wextra -Werror
 DB_FLAGS		=	-g
 INCLUDE_FLAGS	=	-I $(INCLUDES) -I ./libft -I ./MLX42/include/MLX42 -I ./usr/include/GLFW
-MLX42_FLAGS		=	-Iinclude -lglfw -L"/usr/local/opt/glfw/lib"
+MLX42_FLAGS		=	-Iinclude -lglfw -L"/Users/$(USER)/.brew/opt/glfw/lib/"
 
 ################################################################################
 # LIBRARIES

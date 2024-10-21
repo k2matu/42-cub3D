@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: halgordzibari <halgordzibari@student.42    +#+  +:+       +#+        */
+/*   By: hzibari <hzibari@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/25 14:18:41 by halgordziba       #+#    #+#             */
-/*   Updated: 2024/10/18 19:10:33 by halgordziba      ###   ########.fr       */
+/*   Updated: 2024/10/21 16:01:12 by hzibari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,14 +20,14 @@ void	fix_inters_for_y(t_struct *game, double *y_inter, double *x_inter, double *
 	else
 		*y_step *= -1;
 	*x_inter = game->ray->pixel_pos_x + (*y_inter - game->ray->pixel_pos_y) / tan(game->ray->ray_angle);
-	if (game->ray->ray_angle > M_PI_2 && game->ray->ray_angle < (3 * M_PI_2))
+	if (game->ray->ray_angle > M_PI/2 && game->ray->ray_angle < (3 * M_PI/2))
 		*x_step *= -1;
 }
 
 void	fix_inters_for_x(t_struct *game, double *y_inter, double *x_inter, double *x_step, double *y_step)
 {
 	*x_inter = floor(game->ray->pixel_pos_x / TILE_SIZE) * TILE_SIZE;
-	if (game->ray->ray_angle < M_PI_2 && game->ray->ray_angle > (3 * M_PI_2))
+	if (game->ray->ray_angle < M_PI/2 && game->ray->ray_angle > (3 * M_PI/2))
 		*x_inter += TILE_SIZE;
 	else
 		*x_step *= -1;
@@ -43,7 +43,9 @@ int	check_wall_hit(t_struct *game, double x_inter, double y_inter)
 
 	y_wall = y_inter / TILE_SIZE;
 	x_wall = x_inter / TILE_SIZE;
-	if (game->map[y_wall][x_wall] == 1)
+	if (y_wall < 0 || y_wall >= game->ray->map_hight || x_wall < 0 || x_wall >= game->ray->map_weight)
+		return (0);
+	if (game->map[y_wall][x_wall] == '1')
 		return(1);
 	return(0);
 }
