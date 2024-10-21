@@ -12,6 +12,29 @@
 
 #include "cub3D.h"
 
+int count_map_hight(t_struct *game)
+{
+	int i;
+
+	i = 0;
+	while(game->map[i])
+		i++;
+	return(i);
+}
+
+void init_ray_info(t_struct *game)
+{
+	game->ray->pixel_pos_x = game->player.pos_x * TILE_SIZE + TILE_SIZE / 2;
+	game->ray->pixel_pos_y = game->player.pos_y * TILE_SIZE + TILE_SIZE / 2;
+	game->ray->player_angle = M_PI;
+	game->ray->fov_radians = (FOV * M_PI) / 180;
+	game->ray->map_hight = count_map_hight(game);
+	game->ray->map_weight = ft_strlen(game->map[0]);
+	game->ray->distance = 0;
+	game->ray->ray_angle = 0;
+	game->ray->distance = 0;
+}
+
 void	init_player(t_struct *game)
 {
 	game->plyr_px = ft_calloc(1, sizeof(t_player_px));
@@ -47,7 +70,7 @@ void	game_loop(t_struct *game)
 {
 	game->img = mlx_new_image(game->mlx, S_W, S_H);	
 	game->ray = ft_calloc(1, sizeof(t_ray));
-	cast_rays(game); // BORROWED UNTIL PARTNER FIXES THIS PART.
+	raycasting(game); // BORROWED UNTIL PARTNER FIXES THIS PART.
 }
 
 int	main(int argc, char **argv)
@@ -57,6 +80,7 @@ int	main(int argc, char **argv)
 	parse(argc, argv, &game);
 	game.mlx = safe_mlx_init(&game);
 	init_player(&game);
+	init_ray_info(&game);
 	game_loop(&game);
 	mlx_loop(game.mlx);
 	safe_mlx_terminate(&game);

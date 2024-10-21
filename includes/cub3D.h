@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kmatjuhi <kmatjuhi@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: halgordzibari <halgordzibari@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 22:03:35 by kmatjuhi          #+#    #+#             */
-/*   Updated: 2024/09/27 21:16:58 by kmatjuhi         ###   ########.fr       */
+/*   Updated: 2024/10/18 19:13:59 by halgordziba      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,11 +50,17 @@ typedef struct s_player_px {
 	float	fov_radians;
 }	t_player_px;
 
-typedef struct s_ray	//the ray structure
+typedef struct s_ray
 {
-	double	ray_ngl;	// ray angle
-	double	distance;	// distance to the wall
-	int		flag;		// flag for the wall
+	double	ray_angle;
+	double	player_angle;
+	double	distance;
+	double	pixel_pos_x;
+	double	pixel_pos_y;
+	float	fov_radians;
+	int		flag;
+	int		map_hight;
+	int		map_weight;
 }	t_ray;
 
 typedef struct s_struct
@@ -93,7 +99,13 @@ ssize_t	safe_read(int fd, char *dest, ssize_t size, bool is_malloced);
 mlx_t	*safe_mlx_init(t_struct *game);
 void	safe_mlx_terminate(t_struct *game);
 
-void	cast_rays(t_struct *mlx);
+
 float	nor_angle(float angle);
+
+/* ray funtions */
+void	raycasting(t_struct *game);
+void	fix_inters_for_y(t_struct *game, double *y_inter, double *x_inter, double *x_step, double *y_step);
+void	fix_inters_for_x(t_struct *game, double *y_inter, double *x_inter, double *x_step, double *y_step);
+int		check_wall_hit(t_struct *game, double x_inter, double y_inter);
 
 #endif

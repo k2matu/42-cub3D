@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   safe_mlx.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kmatjuhi <kmatjuhi@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: halgordzibari <halgordzibari@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 14:13:46 by kmatjuhi          #+#    #+#             */
-/*   Updated: 2024/09/27 21:44:31 by kmatjuhi         ###   ########.fr       */
+/*   Updated: 2024/10/18 19:35:44 by halgordziba      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
