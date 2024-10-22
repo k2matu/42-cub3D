@@ -6,7 +6,7 @@
 /*   By: hzibari <hzibari@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 22:03:35 by kmatjuhi          #+#    #+#             */
-/*   Updated: 2024/10/21 15:58:03 by hzibari          ###   ########.fr       */
+/*   Updated: 2024/10/22 14:52:51 by hzibari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 
 # define S_W 1900
 # define S_H 1000
-# define TILE_SIZE 30
+# define TILE_SIZE 60
 # define FOV 60
 # define M_PI 3.14159265358979323846
 
