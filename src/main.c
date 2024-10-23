@@ -42,7 +42,7 @@ void	init_player(t_struct *game)
 	// 	game->ray->player_angle = M_PI;
 	// else
 	// 	game->ray->player_angle = (3 * M_PI) / 2;
-	game->ray->player_angle = M_PI  / 4;
+	game->ray->player_angle = M_PI / 2;
 	game->ray->map_hight = count_map_hight(game);
 	game->ray->map_weight = ft_strlen(game->map[0]);
 	game->ray->distance = 0;
@@ -50,7 +50,7 @@ void	init_player(t_struct *game)
 	game->ray->distance = 0;
 }
 
-double	nor_angle(float angle)	// normalize the angle
+float	nor_angle(float angle)	// normalize the angle
 {
 	if (angle < 0)
 		angle += (2 * M_PI);

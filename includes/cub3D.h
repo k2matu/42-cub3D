@@ -6,7 +6,7 @@
 /*   By: hzibari <hzibari@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 22:03:35 by kmatjuhi          #+#    #+#             */
-/*   Updated: 2024/10/22 14:52:51 by hzibari          ###   ########.fr       */
+/*   Updated: 2024/10/23 16:39:16 by hzibari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,10 @@
 # include "msg.h"
 # include <math.h>
 
-# define S_W 1900
-# define S_H 1000
+# define S_W 600
+# define S_H 500
 # define TILE_SIZE 60
-# define FOV 60
+# define FOV 360
 # define M_PI 3.14159265358979323846
 
 typedef struct s_element
@@ -93,13 +93,13 @@ mlx_t	*safe_mlx_init(t_struct *game);
 void	safe_mlx_terminate(t_struct *game);
 
 
-double	nor_angle(float angle);
+float	nor_angle(float angle);
 
 /* ray funtions */
 void	raycasting(t_struct *game);
-void	fix_inters_for_y(t_struct *game, double *y_inter, double *x_inter, double *x_step, double *y_step);
-void	fix_inters_for_x(t_struct *game, double *y_inter, double *x_inter, double *x_step, double *y_step);
-int		check_wall_hit(t_struct *game, double x_inter, double y_inter);
+void	fix_inters_for_y(t_struct *game, float *y_inter, float *x_inter, float *x_step, float *y_step);
+void	fix_inters_for_x(t_struct *game, float *y_inter, float *x_inter, float *x_step, float *y_step);
+int		check_wall_hit(t_struct *game, float x_inter, float y_inter);
 
 /*for the map to see rays*/
 void mlx_draw_line(mlx_image_t* img, int x0, int y0, int x1, int y1, uint32_t color);
