@@ -6,7 +6,7 @@
 /*   By: hzibari <hzibari@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 22:03:35 by kmatjuhi          #+#    #+#             */
-/*   Updated: 2024/10/23 16:39:16 by hzibari          ###   ########.fr       */
+/*   Updated: 2024/10/24 15:12:21 by hzibari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@
 # include "msg.h"
 # include <math.h>
 
-# define S_W 600
-# define S_H 500
-# define TILE_SIZE 60
+# define S_W 2000
+# define S_H 1500
+# define TILE_SIZE 50
 # define FOV 360
 # define M_PI 3.14159265358979323846
 

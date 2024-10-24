@@ -34,15 +34,14 @@ void	init_player(t_struct *game)
 	game->ray->pixel_pos_x = game->player.pos_x * TILE_SIZE + TILE_SIZE / 2;
 	game->ray->pixel_pos_y = game->player.pos_y * TILE_SIZE + TILE_SIZE / 2;
 	game->ray->fov_radians = (FOV * M_PI) / 180;
-	// if (game->player.direction == 'E')
-	// 	game->ray->player_angle = 0;
-	// else if (game->player.direction == 'N')
-	// 	game->ray->player_angle = M_PI / 2;
-	// else if (game->player.direction == 'W')
-	// 	game->ray->player_angle = M_PI;
-	// else
-	// 	game->ray->player_angle = (3 * M_PI) / 2;
-	game->ray->player_angle = M_PI / 2;
+	if (game->player.direction == 'E')
+		game->ray->player_angle = 0;
+	else if (game->player.direction == 'N')
+		game->ray->player_angle = M_PI / 2;
+	else if (game->player.direction == 'W')
+		game->ray->player_angle = M_PI;
+	else
+		game->ray->player_angle = (3 * M_PI) / 2;
 	game->ray->map_hight = count_map_hight(game);
 	game->ray->map_weight = ft_strlen(game->map[0]);
 	game->ray->distance = 0;
@@ -50,7 +49,7 @@ void	init_player(t_struct *game)
 	game->ray->distance = 0;
 }
 
-float	nor_angle(float angle)	// normalize the angle
+float	nor_angle(float angle)
 {
 	if (angle < 0)
 		angle += (2 * M_PI);
@@ -61,8 +60,7 @@ float	nor_angle(float angle)	// normalize the angle
 
 
 
-
-
+/*##################################################  BORROWED CODE  ###########################################################*/
 
 
 
@@ -143,6 +141,9 @@ void draw_player(t_struct *game)
 }
 
 
+/*#############################################################################################################################################*/
+
+
 
 
 
@@ -153,11 +154,7 @@ void draw_player(t_struct *game)
 void	game_loop(t_struct *game)
 {
 	game->img = mlx_new_image(game->mlx, S_W, S_H);	
-
-	// printf("x pos: %d\n", game->player.pos_x);
-	// printf("y pos: %d\n", game->player.pos_y);
-	// printf("x pixel: %f\n", game->ray->pixel_pos_x);
-	// printf("y pixel: %f\n", game->ray->pixel_pos_y);
+	//game->ray = ft_calloc(1, sizeof(t_ray));
 
 
 	draw_map(game);
@@ -166,7 +163,6 @@ void	game_loop(t_struct *game)
 	raycasting(game); // BORROWED UNTIL PARTNER FIXES THIS PART.
 
 	mlx_image_to_window(game->mlx, game->img, 0, 0);
-	//game->ray = ft_calloc(1, sizeof(t_ray));
 }
 
 int	main(int argc, char **argv)
