@@ -6,13 +6,14 @@
 /*   By: hzibari <hzibari@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 14:13:46 by kmatjuhi          #+#    #+#             */
-/*   Updated: 2024/10/21 15:08:54 by hzibari          ###   ########.fr       */
+/*   Updated: 2024/10/28 13:54:16 by hzibari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-mlx_t	*safe_mlx_init(t_struct *game) {
+mlx_t	*safe_mlx_init(t_struct *game)
+{
 	mlx_t	*mlx;
 
 	mlx = mlx_init(S_W, S_H, "Cub3D", 1);
@@ -27,7 +28,8 @@ mlx_t	*safe_mlx_init(t_struct *game) {
 	return (mlx);
 }
 
-void	safe_mlx_terminate(t_struct *game) {
+void	safe_mlx_terminate(t_struct *game)
+{
 	mlx_terminate(game->mlx);
 	free(game->content);
 	ft_free_arr(game->map);

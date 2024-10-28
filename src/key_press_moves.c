@@ -6,7 +6,7 @@
 /*   By: hzibari <hzibari@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 17:07:15 by hzibari           #+#    #+#             */
-/*   Updated: 2024/10/24 17:23:15 by hzibari          ###   ########.fr       */
+/*   Updated: 2024/10/28 14:00:28 by hzibari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,36 +14,35 @@
 
 static void	move_up(t_struct *game)
 {
-	if (game->map[(int)game->ray->pixel_pos_y - 1][(int)game->ray->pixel_pos_x] == '1')
+	if (game->map[(int)game->ray->pixel_pos_y - 1]
+		[(int)game->ray->pixel_pos_x] == '1')
 		return ;
 	game->ray->pixel_pos_y--;
-
 }
 
 static void	move_down(t_struct *game)
 {
-	if (game->map[(int)game->ray->pixel_pos_y + 1][(int)game->ray->pixel_pos_x] == '1')
+	if (game->map[(int)game->ray->pixel_pos_y + 1]
+		[(int)game->ray->pixel_pos_x] == '1')
 		return ;
 	game->ray->pixel_pos_y++;
-
 }
 
 static void	move_left(t_struct *game)
 {
-	if (game->map[(int)game->ray->pixel_pos_y][(int)game->ray->pixel_pos_x - 1] == '1')
+	if (game->map[(int)game->ray->pixel_pos_y]
+		[(int)game->ray->pixel_pos_x - 1] == '1')
 		return ;
 	game->ray->pixel_pos_x--;
-
 }
 
 static void	move_right(t_struct *game)
 {
-	if (game->map[(int)game->ray->pixel_pos_y][(int)game->ray->pixel_pos_x + 1] == '1')
+	if (game->map[(int)game->ray->pixel_pos_y]
+		[(int)game->ray->pixel_pos_x + 1] == '1')
 		return ;
 	game->ray->pixel_pos_x++;
-
 }
-
 
 void	key_press(mlx_key_data_t keydata, void *param)
 {
