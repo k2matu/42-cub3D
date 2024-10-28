@@ -6,7 +6,7 @@
 /*   By: hzibari <hzibari@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 22:03:35 by kmatjuhi          #+#    #+#             */
-/*   Updated: 2024/10/28 13:57:07 by hzibari          ###   ########.fr       */
+/*   Updated: 2024/10/28 16:12:15 by hzibari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,5 +101,8 @@ int		check_wall_hit(t_struct *game, float x_inter, float y_inter);
 
 /* fir the key press movements */
 void	key_press(mlx_key_data_t keydata, void *param);
+
+/* wall rendering */
+void	render_wall(t_struct *mlx, int ray, float distance);
 
 #endif
