@@ -6,7 +6,7 @@
 /*   By: hzibari <hzibari@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 22:03:35 by kmatjuhi          #+#    #+#             */
-/*   Updated: 2024/10/24 15:12:21 by hzibari          ###   ########.fr       */
+/*   Updated: 2024/10/28 13:17:16 by hzibari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 # define S_W 2000
 # define S_H 1500
 # define TILE_SIZE 50
-# define FOV 360
+# define FOV 1
 # define M_PI 3.14159265358979323846
 
 typedef struct s_element
@@ -101,7 +101,11 @@ void	fix_inters_for_y(t_struct *game, float *y_inter, float *x_inter, float *x_s
 void	fix_inters_for_x(t_struct *game, float *y_inter, float *x_inter, float *x_step, float *y_step);
 int		check_wall_hit(t_struct *game, float x_inter, float y_inter);
 
+/* fir the key press movements */
+void	key_press(mlx_key_data_t keydata, void *param);
+
+
 /*for the map to see rays*/
-void mlx_draw_line(mlx_image_t* img, int x0, int y0, int x1, int y1, uint32_t color);
+void	mlx_draw_line(mlx_image_t* img, int x0, int y0, int x1, int y1, uint32_t color);
 
 #endif

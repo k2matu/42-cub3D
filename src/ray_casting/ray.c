@@ -6,7 +6,7 @@
 /*   By: hzibari <hzibari@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 19:04:54 by halgordziba       #+#    #+#             */
-/*   Updated: 2024/10/24 15:08:26 by hzibari          ###   ########.fr       */
+/*   Updated: 2024/10/28 13:16:18 by hzibari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,11 +73,12 @@ void raycasting(t_struct *game)
 	distance = 0;
 
 	game->ray->ray_angle = game->ray->player_angle - (game->ray->fov_radians / 2);
-	while (ray_id < S_W)
+	while (ray_id < 1)
 	{
 		game->ray->ray_angle = nor_angle(game->ray->ray_angle);
 		distance = cast_single_ray(game);
 
+		printf("distance: %f", distance);
 		float x_end = game->ray->pixel_pos_x + distance * cos(game->ray->ray_angle);
 		float y_end = game->ray->pixel_pos_y + distance * sin(game->ray->ray_angle);
 		mlx_draw_line(game->img, game->ray->pixel_pos_x, game->ray->pixel_pos_y, x_end, y_end, 0xFFFFFFFF);

@@ -6,7 +6,7 @@
 #    By: hzibari <hzibari@student.hive.fi>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/05 15:16:43 by kmatjuhi          #+#    #+#              #
-#    Updated: 2024/10/21 14:12:25 by hzibari          ###   ########.fr        #
+#    Updated: 2024/10/24 17:09:49 by hzibari          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,7 +49,8 @@ SRCS			=	main.c \
 					flood_fill.c \
 					ft_arrdup.c \
 					ray_utils.c \
-					ray.c
+					ray.c \
+					key_press_moves.c
 
 OBJECTS			=	$(addprefix $(OBJ_DIR)/, $(SRCS:%.c=%.o))
 
