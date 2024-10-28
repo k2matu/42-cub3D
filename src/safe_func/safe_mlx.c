@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   safe_mlx.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kmatjuhi <kmatjuhi@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: hzibari <hzibari@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 14:13:46 by kmatjuhi          #+#    #+#             */
-/*   Updated: 2024/09/27 21:44:31 by kmatjuhi         ###   ########.fr       */
+/*   Updated: 2024/10/21 15:08:54 by hzibari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,6 @@ void	safe_mlx_terminate(t_struct *game) {
 	free(game->content);
 	ft_free_arr(game->map);
 	free_elements(&(game->elem));
-	if (game->plyr_px)
-		free(game->plyr_px);
+	if (game->ray)
+		free(game->ray);
 }

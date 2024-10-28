@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: kmatjuhi <kmatjuhi@student.hive.fi>        +#+  +:+       +#+         #
+#    By: hzibari <hzibari@student.hive.fi>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/05 15:16:43 by kmatjuhi          #+#    #+#              #
-#    Updated: 2024/09/27 14:48:42 by kmatjuhi         ###   ########.fr        #
+#    Updated: 2024/10/24 17:09:49 by hzibari          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ CC				=	cc
 # CC_FLAGS		=	-Wall -Wextra -Werror
 DB_FLAGS		=	-g
 INCLUDE_FLAGS	=	-I $(INCLUDES) -I ./libft -I ./MLX42/include/MLX42 -I ./usr/include/GLFW
-MLX42_FLAGS		=	-Iinclude -lglfw -L"/usr/lib/aarch64-linux-gnu"
+MLX42_FLAGS		=	-Iinclude -lglfw -L"/Users/$(USER)/.brew/opt/glfw/lib/"
 
 ################################################################################
 # LIBRARIES
@@ -48,7 +48,9 @@ SRCS			=	main.c \
 					validate_elems.c \
 					flood_fill.c \
 					ft_arrdup.c \
-					ray_casting.c
+					ray_utils.c \
+					ray.c \
+					key_press_moves.c
 
 OBJECTS			=	$(addprefix $(OBJ_DIR)/, $(SRCS:%.c=%.o))
 

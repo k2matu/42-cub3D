@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kmatjuhi <kmatjuhi@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: hzibari <hzibari@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 22:03:35 by kmatjuhi          #+#    #+#             */
-/*   Updated: 2024/09/27 21:16:58 by kmatjuhi         ###   ########.fr       */
+/*   Updated: 2024/10/28 13:17:16 by hzibari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,11 @@
 # include "msg.h"
 # include <math.h>
 
-# define S_W 1900
-# define S_H 1000
-# define TILE_SIZE 30
-# define FOV 60
+# define S_W 2000
+# define S_H 1500
+# define TILE_SIZE 50
+# define FOV 1
+# define M_PI 3.14159265358979323846
 
 typedef struct s_element
 {
@@ -43,18 +44,17 @@ typedef struct s_player
 	char	direction;
 }	t_player;
 
-typedef struct s_player_px {
-	int		pos_px_y;
-	int		pos_px_x;
-	double	angle;
-	float	fov_radians;
-}	t_player_px;
-
-typedef struct s_ray	//the ray structure
+typedef struct s_ray
 {
-	double	ray_ngl;	// ray angle
-	double	distance;	// distance to the wall
-	int		flag;		// flag for the wall
+	double	ray_angle;
+	double	player_angle;
+	double	distance;
+	double	pixel_pos_x;
+	double	pixel_pos_y;
+	float	fov_radians;
+	int		flag;
+	int		map_hight;
+	int		map_weight;
 }	t_ray;
 
 typedef struct s_struct
@@ -65,7 +65,6 @@ typedef struct s_struct
 	int				col;
 	t_element		elem;
 	t_player		player;
-	t_player_px		*plyr_px;
 	mlx_t			*mlx;
 	mlx_image_t		*img;
 	t_ray			*ray;
@@ -93,7 +92,20 @@ ssize_t	safe_read(int fd, char *dest, ssize_t size, bool is_malloced);
 mlx_t	*safe_mlx_init(t_struct *game);
 void	safe_mlx_terminate(t_struct *game);
 
-void	cast_rays(t_struct *mlx);
+
 float	nor_angle(float angle);
+
+/* ray funtions */
+void	raycasting(t_struct *game);
+void	fix_inters_for_y(t_struct *game, float *y_inter, float *x_inter, float *x_step, float *y_step);
+void	fix_inters_for_x(t_struct *game, float *y_inter, float *x_inter, float *x_step, float *y_step);
+int		check_wall_hit(t_struct *game, float x_inter, float y_inter);
+
+/* fir the key press movements */
+void	key_press(mlx_key_data_t keydata, void *param);
+
+
+/*for the map to see rays*/
+void	mlx_draw_line(mlx_image_t* img, int x0, int y0, int x1, int y1, uint32_t color);
 
 #endif
