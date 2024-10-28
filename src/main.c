@@ -1,25 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main->c                                             :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kmatjuhi <kmatjuhi@student->hive->fi>        +#+  +:+       +#+        */
+/*   By: hzibari <hzibari@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/05 15:31:32 by kmatjuhi          #+#    #+#             */
-/*   Updated: 2024/09/27 14:49:39 by kmatjuhi         ###   ########->fr       */
+/*   Updated: 2024/10/28 13:59:06 by hzibari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-int count_map_hight(t_struct *game)
+int	count_map_hight(t_struct *game)
 {
-	int i;
+	int	i;
 
 	i = 0;
-	while(game->map[i])
+	while (game->map[i])
 		i++;
-	return(i);
+	return (i);
 }
 
 void	init_player(t_struct *game)
@@ -56,8 +56,8 @@ float	nor_angle(float angle)
 
 void	game_loop(t_struct *game)
 {
-	game->img = mlx_new_image(game->mlx, S_W, S_H);	
-	raycasting(game); // BORROWED UNTIL PARTNER FIXES THIS PART.
+	game->img = mlx_new_image(game->mlx, S_W, S_H);
+	raycasting(game);
 	mlx_image_to_window(game->mlx, game->img, 0, 0);
 }
 
@@ -69,7 +69,7 @@ int	main(int argc, char **argv)
 	game.mlx = safe_mlx_init(&game);
 	init_player(&game);
 	game_loop(&game);
-    mlx_key_hook(game.mlx, &key_press, &game);
+	mlx_key_hook(game.mlx, &key_press, &game);
 	mlx_loop(game.mlx);
 	safe_mlx_terminate(&game);
 	return (0);

@@ -6,7 +6,7 @@
 /*   By: hzibari <hzibari@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 22:03:35 by kmatjuhi          #+#    #+#             */
-/*   Updated: 2024/10/28 13:41:52 by hzibari          ###   ########.fr       */
+/*   Updated: 2024/10/28 13:57:07 by hzibari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,6 @@ ssize_t	safe_read(int fd, char *dest, ssize_t size, bool is_malloced);
 /* safe_mlx */
 mlx_t	*safe_mlx_init(t_struct *game);
 void	safe_mlx_terminate(t_struct *game);
-
 
 float	nor_angle(float angle);
 
