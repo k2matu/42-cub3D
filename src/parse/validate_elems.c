@@ -6,7 +6,7 @@
 /*   By: kmatjuhi <kmatjuhi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/07 08:10:06 by kmatjuhi          #+#    #+#             */
-/*   Updated: 2024/10/29 12:04:42 by kmatjuhi         ###   ########.fr       */
+/*   Updated: 2024/10/29 20:07:50 by kmatjuhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,13 @@
 static void	check_png_files(t_struct *game)
 {
 	if (ft_strrncmp(game->elem.north, ".png", 4))
-		clean_exit(game, ERR_ELEM_INVALID, game->map);
+		clean_exit(game, ERR_FILE_NOT_PNG, game->map);
 	if (ft_strrncmp(game->elem.south, ".png", 4))
-		clean_exit(game, ERR_ELEM_INVALID, game->map);
+		clean_exit(game, ERR_FILE_NOT_PNG, game->map);
 	if (ft_strrncmp(game->elem.east, ".png", 4))
-		clean_exit(game, ERR_ELEM_INVALID, game->map);
+		clean_exit(game, ERR_FILE_NOT_PNG, game->map);
 	if (ft_strrncmp(game->elem.west, ".png", 4))
-		clean_exit(game, ERR_ELEM_INVALID, game->map);
+		clean_exit(game, ERR_FILE_NOT_PNG, game->map);
 }
 
 static bool	is_num(char *str)

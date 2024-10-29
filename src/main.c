@@ -6,7 +6,7 @@
 /*   By: kmatjuhi <kmatjuhi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/05 15:31:32 by kmatjuhi          #+#    #+#             */
-/*   Updated: 2024/10/29 10:08:53 by kmatjuhi         ###   ########.fr       */
+/*   Updated: 2024/10/29 20:11:32 by kmatjuhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,9 +44,32 @@ float	nor_angle(float angle)
 	return (angle);
 }
 
+static void	init_texture(t_struct *game)
+{
+	game->texture = ft_calloc(1, sizeof(t_texture));
+	if (!game->texture)
+	{
+		safe_mlx_terminate(game);
+		ft_putendl_fd(ERR_CALLOC, 2);
+		exit(EXIT_FAILURE);
+	}
+	game->texture->south = mlx_load_png(game->elem.south);
+	game->texture->north = mlx_load_png(game->elem.north);
+	game->texture->east = mlx_load_png(game->elem.east);
+	game->texture->west = mlx_load_png(game->elem.west);
+	if (!game->texture->south || !game->texture->north || !game->texture->east 
+		|| !game->texture->west)
+	{
+		safe_mlx_terminate(game);
+		ft_putendl_fd(ERR_MLX_TEXTURE, 2);
+		exit(EXIT_FAILURE);
+	}
+}
+
 void	game_loop(t_struct *game)
 {
 	game->img = mlx_new_image(game->mlx, S_W, S_H);
+	init_texture(game);
 	raycasting(game);
 	mlx_image_to_window(game->mlx, game->img, 0, 0);
 }

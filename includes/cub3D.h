@@ -6,7 +6,7 @@
 /*   By: kmatjuhi <kmatjuhi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 22:03:35 by kmatjuhi          #+#    #+#             */
-/*   Updated: 2024/10/29 12:05:09 by kmatjuhi         ###   ########.fr       */
+/*   Updated: 2024/10/29 19:54:12 by kmatjuhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,14 @@ typedef struct s_element
 	int		c_rgba;
 }	t_element;
 
+typedef struct s_texture
+{
+	mlx_texture_t	*north;
+	mlx_texture_t	*south;
+	mlx_texture_t	*west;
+	mlx_texture_t	*east;
+}	t_texture;
+
 typedef struct s_player
 {
 	int		pos_y;
@@ -69,6 +77,7 @@ typedef struct s_struct
 	mlx_t			*mlx;
 	mlx_image_t		*img;
 	t_ray			*ray;
+	t_texture		*texture;
 }	t_struct;
 
 /* free_func.c */

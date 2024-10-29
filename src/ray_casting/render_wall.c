@@ -6,20 +6,50 @@
 /*   By: kmatjuhi <kmatjuhi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 09:46:47 by kmatjuhi          #+#    #+#             */
-/*   Updated: 2024/10/29 12:11:06 by kmatjuhi         ###   ########.fr       */
+/*   Updated: 2024/10/29 20:51:07 by kmatjuhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-void draw_wall(t_struct *game, int ray, int top_pxl, int bottom_pxl)
+mlx_texture_t	*get_texture(t_struct *game)
 {
-	int color = 0xFFFFFF;
+	if (game->ray->flag == 0)
+	{
+		if (game->ray->ray_angle > M_PI / 2 && 
+			game->ray->ray_angle < 3 * (M_PI / 2))
+			return (game->texture->west);
+		else
+			return (game->texture->east);
+	}
+	else
+	{
+		if (game->ray->ray_angle > 0 && game->ray->ray_angle < M_PI)
+			return (game->texture->south);
+		else
+			return (game->texture->north);
+	}
+}
+
+void	draw_wall(t_struct *game, int ray, int top_pxl, int bottom_pxl)
+{
+	mlx_texture_t	*texture;
+	double			texture_step;
+	double			y_texture;
+	int				x_texture;
+	int				color;
+
+	y_texture = 0;
+	texture = get_texture(game);
+	texture_step = (double)texture->height / (bottom_pxl - top_pxl);
+	x_texture = ray % texture->width;
 	while (top_pxl < bottom_pxl)
 	{
+		color = *((uint32_t *)texture->pixels + ((int)y_texture * texture->width) + x_texture);
 		if (!(ray < 0 || ray >= S_W || top_pxl < 0 || top_pxl >= S_H))
 			mlx_put_pixel(game->img, ray, top_pxl, color);
 		top_pxl++;
+		y_texture += texture_step;
 	}
 }
 
