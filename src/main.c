@@ -3,24 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hzibari <hzibari@student.hive.fi>          +#+  +:+       +#+        */
+/*   By: kmatjuhi <kmatjuhi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/05 15:31:32 by kmatjuhi          #+#    #+#             */
-/*   Updated: 2024/10/28 16:13:25 by hzibari          ###   ########.fr       */
+/*   Updated: 2024/10/29 10:08:53 by kmatjuhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
-
-int	count_map_hight(t_struct *game)
-{
-	int	i;
-
-	i = 0;
-	while (game->map[i])
-		i++;
-	return (i);
-}
 
 void	init_player(t_struct *game)
 {
