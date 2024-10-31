@@ -6,7 +6,7 @@
 /*   By: hzibari <hzibari@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 17:07:15 by hzibari           #+#    #+#             */
-/*   Updated: 2024/10/31 14:43:16 by hzibari          ###   ########.fr       */
+/*   Updated: 2024/10/31 16:53:32 by hzibari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,17 +62,16 @@ static void	move_right(t_struct *game)
 
 static void	rotate_left(t_struct *game)
 {
-    game->ray->player_angle -= ROTATE_SPEED;
-
-    if (game->ray->player_angle < 0)
-        game->ray->player_angle += 2 * M_PI;
+	game->ray->player_angle -= ROTATE_SPEED;
+	if (game->ray->player_angle < 0)
+		game->ray->player_angle += 2 * M_PI;
 }
 
 static void	rotate_right(t_struct *game)
 {
 	game->ray->player_angle += ROTATE_SPEED;
 	if (game->ray->player_angle >= 2 * M_PI)
-	    game->ray->player_angle -= 2 * M_PI;
+		game->ray->player_angle -= 2 * M_PI;
 }
 
 void	key_press(mlx_key_data_t keydata, void *param)
