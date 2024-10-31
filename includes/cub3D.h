@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kmatjuhi <kmatjuhi@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: hzibari <hzibari@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 22:03:35 by kmatjuhi          #+#    #+#             */
-/*   Updated: 2024/10/29 19:54:12 by kmatjuhi         ###   ########.fr       */
+/*   Updated: 2024/10/31 14:50:12 by hzibari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@
 # define TILE_SIZE 30
 # define FOV 60
 # define MOVE_SPEED 0.9
+# define ROTATE_SPEED 0.05
 # define M_PI 3.14159265358979323846
 
 typedef struct s_element
