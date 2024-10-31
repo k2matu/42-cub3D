@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: hzibari <hzibari@student.hive.fi>          +#+  +:+       +#+         #
+#    By: kmatjuhi <kmatjuhi@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/05 15:16:43 by kmatjuhi          #+#    #+#              #
-#    Updated: 2024/10/31 14:31:55 by hzibari          ###   ########.fr        #
+#    Updated: 2024/10/29 11:11:06 by kmatjuhi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,7 +31,7 @@ MLX42			=	./MLX42/build/libmlx42.a
 ################################################################################
 # GENERAL
 ################################################################################
-NAME			=	cub
+NAME			=	cub3D
 INCLUDES		=	./includes
 OBJ_DIR			=	./obj
 SRC_DIR			=	./src
@@ -51,6 +51,7 @@ SRCS			=	main.c \
 					ray_utils.c \
 					ray.c \
 					key_press_moves.c \
+					render_wall.c
 
 OBJECTS			=	$(addprefix $(OBJ_DIR)/, $(SRCS:%.c=%.o))
 
@@ -63,7 +64,7 @@ all: $(NAME)
 
 $(NAME): $(OBJECTS) $(LIBFT) $(MLX42)
 	@echo "--------------------------------------------"
-	@$(CC) $(OBJECTS) $(CC_FLAGS) $(INCLUDE_FLAGS) $(DB_FLAGS) $(LIBFT) $(MLX42) -o $(NAME) -lglfw -lm
+	@$(CC) $(OBJECTS) $(CC_FLAGS) $(INCLUDE_FLAGS) $(DB_FLAGS) $(LIBFT) $(MLX42) $(MLX42_FLAGS) -o $(NAME) -lm
 	@echo "[$(NAME)] $(B)Built target $(NAME)$(RC)"
 	@echo "--------------------------------------------"
 
@@ -77,7 +78,7 @@ $(LIBFT):
 
 $(MLX42):
 	cd MLX42 && cmake -B build
-	cd MLX42 && cmake --build build -j4
+	cd MLX42 && cmake --build build
 
 clean:
 	@rm -rf $(OBJ_DIR)

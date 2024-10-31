@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hzibari <hzibari@student.hive.fi>          +#+  +:+       +#+        */
+/*   By: kmatjuhi <kmatjuhi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 22:03:35 by kmatjuhi          #+#    #+#             */
-/*   Updated: 2024/10/31 14:31:49 by hzibari          ###   ########.fr       */
+/*   Updated: 2024/10/29 19:54:12 by kmatjuhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,17 @@ typedef struct s_element
 	char	*east;
 	char	*floor;
 	char	*ceiling;
+	int		f_rgba;
+	int		c_rgba;
 }	t_element;
+
+typedef struct s_texture
+{
+	mlx_texture_t	*north;
+	mlx_texture_t	*south;
+	mlx_texture_t	*west;
+	mlx_texture_t	*east;
+}	t_texture;
 
 typedef struct s_player
 {
@@ -68,6 +78,7 @@ typedef struct s_struct
 	mlx_t			*mlx;
 	mlx_image_t		*img;
 	t_ray			*ray;
+	t_texture		*texture;
 }	t_struct;
 
 /* free_func.c */
@@ -99,8 +110,9 @@ void	raycasting(t_struct *game);
 void	fix_inters_for_y(t_struct *game, float *y_inter, float *x_inter);
 void	fix_inters_for_x(t_struct *game, float *y_inter, float *x_inter);
 int		check_wall_hit(t_struct *game, float x_inter, float y_inter);
+void	render_wall(t_struct *game, int ray, float distance);
 
-/* fir the key press movements */
+/* key press movements */
 void	key_press(mlx_key_data_t keydata, void *param);
 
 #endif

@@ -6,22 +6,22 @@
 /*   By: kmatjuhi <kmatjuhi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/07 08:10:06 by kmatjuhi          #+#    #+#             */
-/*   Updated: 2024/09/09 14:48:47 by kmatjuhi         ###   ########.fr       */
+/*   Updated: 2024/10/29 20:07:50 by kmatjuhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-static void	check_xpm_files(t_struct *game)
+static void	check_png_files(t_struct *game)
 {
-	if (ft_strrncmp(game->elem.north, ".xpm", 4))
-		clean_exit(game, ERR_ELEM_INVALID, game->map);
-	if (ft_strrncmp(game->elem.south, ".xpm", 4))
-		clean_exit(game, ERR_ELEM_INVALID, game->map);
-	if (ft_strrncmp(game->elem.east, ".xpm", 4))
-		clean_exit(game, ERR_ELEM_INVALID, game->map);
-	if (ft_strrncmp(game->elem.west, ".xpm", 4))
-		clean_exit(game, ERR_ELEM_INVALID, game->map);
+	if (ft_strrncmp(game->elem.north, ".png", 4))
+		clean_exit(game, ERR_FILE_NOT_PNG, game->map);
+	if (ft_strrncmp(game->elem.south, ".png", 4))
+		clean_exit(game, ERR_FILE_NOT_PNG, game->map);
+	if (ft_strrncmp(game->elem.east, ".png", 4))
+		clean_exit(game, ERR_FILE_NOT_PNG, game->map);
+	if (ft_strrncmp(game->elem.west, ".png", 4))
+		clean_exit(game, ERR_FILE_NOT_PNG, game->map);
 }
 
 static bool	is_num(char *str)
@@ -60,10 +60,27 @@ static void	check_color_range(t_struct *game, char **arr)
 	}
 }
 
-static void	check_color(t_struct *game, char *elem)
+static int	convert_color_rgba(t_struct *game, char **arr)
+{
+	int		i;
+	int		color;
+	int		range[3];
+
+	i = 0;
+	while (arr[i])
+	{
+		range[i] = ft_atoi(arr[i]);
+		i++;
+	}
+	color = (range[0] << 24) | (range[1] << 16) | (range[2] << 8) | 255;
+	return (color);
+}
+
+static int	check_color(t_struct *game, char *elem)
 {
 	char	**rgb_char;
 	int		i;
+	int		color;
 
 	i = 0;
 	rgb_char = ft_split(elem, ',');
@@ -75,7 +92,9 @@ static void	check_color(t_struct *game, char *elem)
 		clean_exit(game, ERR_ELEM_INVALID, game->map);
 	}
 	check_color_range(game, rgb_char);
+	color = convert_color_rgba(game, rgb_char);
 	ft_free_arr(rgb_char);
+	return (color);
 }
 
 void	validate_elems(t_struct *game)
@@ -83,7 +102,7 @@ void	validate_elems(t_struct *game)
 	if (!game->elem.north || !game->elem.south || !game->elem.west || \
 	!game->elem.east || !game->elem.floor || !game->elem.ceiling)
 		clean_exit(game, ERR_ELEM_MISSING, game->map);
-	check_xpm_files(game);
-	check_color(game, game->elem.floor);
-	check_color(game, game->elem.ceiling);
+	check_png_files(game);
+	game->elem.f_rgba = check_color(game, game->elem.floor);
+	game->elem.c_rgba = check_color(game, game->elem.ceiling);
 }

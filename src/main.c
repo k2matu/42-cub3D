@@ -3,24 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hzibari <hzibari@student.hive.fi>          +#+  +:+       +#+        */
+/*   By: kmatjuhi <kmatjuhi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/05 15:31:32 by kmatjuhi          #+#    #+#             */
-/*   Updated: 2024/10/31 13:46:17 by hzibari          ###   ########.fr       */
+/*   Updated: 2024/10/29 20:11:32 by kmatjuhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
-
-int	count_map_hight(t_struct *game)
-{
-	int	i;
-
-	i = 0;
-	while (game->map[i])
-		i++;
-	return (i);
-}
 
 void	init_player(t_struct *game)
 {
@@ -54,16 +44,38 @@ float	nor_angle(float angle)
 	return (angle);
 }
 
-void	game_loop(void *param)
+static void	init_texture(t_struct *game)
+{
+	game->texture = ft_calloc(1, sizeof(t_texture));
+	if (!game->texture)
+	{
+		safe_mlx_terminate(game);
+		ft_putendl_fd(ERR_CALLOC, 2);
+		exit(EXIT_FAILURE);
+	}
+	game->texture->south = mlx_load_png(game->elem.south);
+	game->texture->north = mlx_load_png(game->elem.north);
+	game->texture->east = mlx_load_png(game->elem.east);
+	game->texture->west = mlx_load_png(game->elem.west);
+	if (!game->texture->south || !game->texture->north || !game->texture->east 
+		|| !game->texture->west)
+	{
+		safe_mlx_terminate(game);
+		ft_putendl_fd(ERR_MLX_TEXTURE, 2);
+		exit(EXIT_FAILURE);
+	}
+}
+
+void	game_loop(t_struct *game)
 {
 	t_struct *game;
 	
 	game = param;
 	mlx_delete_image(game->mlx, game->img);
 	game->img = mlx_new_image(game->mlx, S_W, S_H);
+	init_texture(game);
 	raycasting(game);
 	mlx_image_to_window(game->mlx, game->img, 0, 0);
-	
 }
 
 int	main(int argc, char **argv)
