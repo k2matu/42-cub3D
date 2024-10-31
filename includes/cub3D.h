@@ -6,7 +6,7 @@
 /*   By: hzibari <hzibari@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 22:03:35 by kmatjuhi          #+#    #+#             */
-/*   Updated: 2024/10/31 14:50:12 by hzibari          ###   ########.fr       */
+/*   Updated: 2024/10/31 16:50:29 by hzibari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 
 # define S_W 2000
 # define S_H 1500
-# define TILE_SIZE 30
+# define TILE_SIZE 10
 # define FOV 60
 # define MOVE_SPEED 0.9
 # define ROTATE_SPEED 0.05
