@@ -6,7 +6,7 @@
 /*   By: hzibari <hzibari@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/05 15:31:32 by kmatjuhi          #+#    #+#             */
-/*   Updated: 2024/10/28 16:13:25 by hzibari          ###   ########.fr       */
+/*   Updated: 2024/10/31 13:46:17 by hzibari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,11 +54,16 @@ float	nor_angle(float angle)
 	return (angle);
 }
 
-void	game_loop(t_struct *game)
+void	game_loop(void *param)
 {
+	t_struct *game;
+	
+	game = param;
+	mlx_delete_image(game->mlx, game->img);
 	game->img = mlx_new_image(game->mlx, S_W, S_H);
 	raycasting(game);
 	mlx_image_to_window(game->mlx, game->img, 0, 0);
+	
 }
 
 int	main(int argc, char **argv)
@@ -68,8 +73,8 @@ int	main(int argc, char **argv)
 	parse(argc, argv, &game);
 	game.mlx = safe_mlx_init(&game);
 	init_player(&game);
-	game_loop(&game);
-	mlx_key_hook(game.mlx, &key_press, &game);
+	mlx_key_hook(game.mlx, key_press, &game);
+	mlx_loop_hook(game.mlx, game_loop, &game);
 	mlx_loop(game.mlx);
 	safe_mlx_terminate(&game);
 	return (0);
