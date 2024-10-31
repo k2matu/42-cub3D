@@ -23,8 +23,9 @@
 
 # define S_W 2000
 # define S_H 1500
-# define TILE_SIZE 50
+# define TILE_SIZE 30
 # define FOV 60
+# define MOVE_SPEED 0.9
 # define M_PI 3.14159265358979323846
 
 typedef struct s_element

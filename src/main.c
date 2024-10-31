@@ -68,6 +68,10 @@ static void	init_texture(t_struct *game)
 
 void	game_loop(t_struct *game)
 {
+	t_struct *game;
+	
+	game = param;
+	mlx_delete_image(game->mlx, game->img);
 	game->img = mlx_new_image(game->mlx, S_W, S_H);
 	init_texture(game);
 	raycasting(game);
@@ -81,8 +85,8 @@ int	main(int argc, char **argv)
 	parse(argc, argv, &game);
 	game.mlx = safe_mlx_init(&game);
 	init_player(&game);
-	game_loop(&game);
-	mlx_key_hook(game.mlx, &key_press, &game);
+	mlx_key_hook(game.mlx, key_press, &game);
+	mlx_loop_hook(game.mlx, game_loop, &game);
 	mlx_loop(game.mlx);
 	safe_mlx_terminate(&game);
 	return (0);

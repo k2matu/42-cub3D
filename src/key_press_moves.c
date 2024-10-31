@@ -14,53 +14,68 @@
 
 static void	move_up(t_struct *game)
 {
-	if (game->map[(int)game->ray->pixel_pos_y - 1]
-		[(int)game->ray->pixel_pos_x] == '1')
-		return ;
-	game->ray->pixel_pos_y--;
+	float new_x = game->ray->pixel_pos_x + cos(game->ray->player_angle) * MOVE_SPEED;
+	float new_y = game->ray->pixel_pos_y + sin(game->ray->player_angle) * MOVE_SPEED;
+
+	if (game->map[(int)(new_y / TILE_SIZE)][(int)(new_x / TILE_SIZE)] != '1')
+	{
+		game->ray->pixel_pos_x = new_x;
+		game->ray->pixel_pos_y = new_y;
+	}
 }
 
 static void	move_down(t_struct *game)
 {
-	if (game->map[(int)game->ray->pixel_pos_y + 1]
-		[(int)game->ray->pixel_pos_x] == '1')
-		return ;
-	game->ray->pixel_pos_y++;
+	float new_x = game->ray->pixel_pos_x - cos(game->ray->player_angle) * MOVE_SPEED;
+	float new_y = game->ray->pixel_pos_y - sin(game->ray->player_angle) * MOVE_SPEED;
+
+	if (game->map[(int)(new_y / TILE_SIZE)][(int)(new_x / TILE_SIZE)] != '1')
+	{
+		game->ray->pixel_pos_x = new_x;
+		game->ray->pixel_pos_y = new_y;
+	}
 }
 
 static void	move_left(t_struct *game)
 {
-	if (game->map[(int)game->ray->pixel_pos_y]
-		[(int)game->ray->pixel_pos_x - 1] == '1')
-		return ;
-	game->ray->pixel_pos_x--;
+	float new_x = game->ray->pixel_pos_x + cos(game->ray->player_angle - M_PI / 2) * MOVE_SPEED;
+	float new_y = game->ray->pixel_pos_y + sin(game->ray->player_angle - M_PI / 2) * MOVE_SPEED;
+
+	if (game->map[(int)(new_y / TILE_SIZE)][(int)(new_x / TILE_SIZE)] != '1')
+	{
+		game->ray->pixel_pos_x = new_x;
+		game->ray->pixel_pos_y = new_y;
+	}
 }
 
 static void	move_right(t_struct *game)
 {
-	if (game->map[(int)game->ray->pixel_pos_y]
-		[(int)game->ray->pixel_pos_x + 1] == '1')
-		return ;
-	game->ray->pixel_pos_x++;
+	float new_x = game->ray->pixel_pos_x + cos(game->ray->player_angle + M_PI / 2) * MOVE_SPEED;
+	float new_y = game->ray->pixel_pos_y + sin(game->ray->player_angle + M_PI / 2) * MOVE_SPEED;
+
+	if (game->map[(int)(new_y / TILE_SIZE)][(int)(new_x / TILE_SIZE)] != '1')
+	{
+		game->ray->pixel_pos_x = new_x;
+		game->ray->pixel_pos_y = new_y;
+	}
 }
 
 void	key_press(mlx_key_data_t keydata, void *param)
 {
 	t_struct	*game;
 
-	game = param;
-	if (keydata.key == MLX_KEY_ESCAPE)
+	game = (t_struct *)param;
+	if (mlx_is_key_down(game->mlx, MLX_KEY_ESCAPE))
+	{
+		printf("Game closed ESC was pressed\n");
 		mlx_close_window(game->mlx);
-	if (keydata.key == MLX_KEY_W
-		&& (keydata.action == MLX_PRESS || keydata.action == MLX_REPEAT))
-		move_up(game);
-	if (keydata.key == MLX_KEY_S
-		&& (keydata.action == MLX_PRESS || keydata.action == MLX_REPEAT))
-		move_down(game);
-	if (keydata.key == MLX_KEY_A
-		&& (keydata.action == MLX_PRESS || keydata.action == MLX_REPEAT))
-		move_left(game);
-	if (keydata.key == MLX_KEY_D
-		&& (keydata.action == MLX_PRESS || keydata.action == MLX_REPEAT))
-		move_right(game);
+	}
+    if (mlx_is_key_down(game->mlx, MLX_KEY_W))
+        move_up(game);
+    if (mlx_is_key_down(game->mlx, MLX_KEY_S))
+        move_down(game);
+    if (mlx_is_key_down(game->mlx, MLX_KEY_A))
+        move_left(game);
+    if (mlx_is_key_down(game->mlx, MLX_KEY_D))
+        move_right(game);
 }
