@@ -6,7 +6,7 @@
 /*   By: hzibari <hzibari@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/25 14:18:41 by halgordziba       #+#    #+#             */
-/*   Updated: 2024/10/28 16:09:40 by hzibari          ###   ########.fr       */
+/*   Updated: 2024/10/31 15:43:22 by hzibari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,14 +58,14 @@ int	check_wall_hit(t_struct *game, float x_inter, float y_inter)
 	if (x_inter < 0 || y_inter < 0)
 		return (1);
 	if (!(game->ray->ray_angle > 0 && game->ray->ray_angle < M_PI))
-		y_inter -= 0.01;
+		y_inter -= 0.001;
 	else
-		y_inter += 0.01;
+		y_inter += 0.001;
 	if (!(game->ray->ray_angle < M_PI / 2
 			|| game->ray->ray_angle > (3 * M_PI) / 2))
-		x_inter -= 0.01;
+		x_inter -= 0.001;
 	else
-		x_inter += 0.01;
+		x_inter += 0.001;
 	y_wall = floor (y_inter / TILE_SIZE);
 	x_wall = floor (x_inter / TILE_SIZE);
 	if (y_wall < 0 || y_wall >= game->row || x_wall < 0 || x_wall >= game->col)
