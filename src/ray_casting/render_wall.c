@@ -6,7 +6,7 @@
 /*   By: kmatjuhi <kmatjuhi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 09:46:47 by kmatjuhi          #+#    #+#             */
-/*   Updated: 2024/10/29 20:51:07 by kmatjuhi         ###   ########.fr       */
+/*   Updated: 2024/10/31 13:31:13 by kmatjuhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,8 @@ void	draw_wall(t_struct *game, int ray, int top_pxl, int bottom_pxl)
 	x_texture = ray % texture->width;
 	while (top_pxl < bottom_pxl)
 	{
-		color = *((uint32_t *)texture->pixels + ((int)y_texture * texture->width) + x_texture);
+		color = *((uint32_t *)texture->pixels + 
+				((int)y_texture * texture->width) + x_texture);
 		if (!(ray < 0 || ray >= S_W || top_pxl < 0 || top_pxl >= S_H))
 			mlx_put_pixel(game->img, ray, top_pxl, color);
 		top_pxl++;
@@ -77,6 +78,7 @@ void	render_wall(t_struct *game, int ray, float distance)
 	double	bottom_pxl;
 	double	top_pxl;
 
+	distance *= cos(game->ray->ray_angle - game->ray->player_angle);
 	dist_player = (S_W / 2) / tan((game->ray->fov_radians) / 2);
 	wall_h = TILE_SIZE / distance * dist_player;
 	bottom_pxl = (S_H / 2) + (wall_h / 2);
