@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hzibari <hzibari@student.hive.fi>          +#+  +:+       +#+        */
+/*   By: kmatjuhi <kmatjuhi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 22:03:35 by kmatjuhi          #+#    #+#             */
-/*   Updated: 2024/10/31 16:50:29 by hzibari          ###   ########.fr       */
+/*   Updated: 2024/11/01 11:07:08 by kmatjuhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,8 @@ char	**arr_pop(char **old_arr, int row);
 void	validate_elems(t_struct *game);
 void	validate_map(t_struct *game, char **map);
 void	flood_fill(char **map, int x, int y, int row);
-char	**ft_arrdup(char **arr);
+char	**ft_arrdup(char **arr, int col);
+int		validate_color(t_struct *game, char *elem);
 
 /* safe_func */
 int		safe_open(char *str);

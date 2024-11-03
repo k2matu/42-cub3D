@@ -6,7 +6,7 @@
 /*   By: kmatjuhi <kmatjuhi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/06 11:38:57 by kmatjuhi          #+#    #+#             */
-/*   Updated: 2024/09/27 21:18:44 by kmatjuhi         ###   ########.fr       */
+/*   Updated: 2024/11/01 11:48:42 by kmatjuhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,27 +89,25 @@ static bool	is_map_enclosed(t_struct *game, char **map, int row)
 
 void	validate_map(t_struct *game, char **map)
 {
-	int		row;
 	int		player_count;
 	char	**map_copy;
 
-	row = 0;
-	player_count = 0;
+	game->row = 0;
 	game->col = 0;
-	while (map[row])
+	player_count = 0;
+	while (map[game->row])
 	{
-		if (!ft_match(map[row], "01NSEW "))
+		if (!ft_match(map[game->row], "01NSEW "))
 			clean_exit(game, ERR_MAP_CHAR, map);
-		player_count = save_player_pos(game, map[row], row, player_count);
-		row++;
+		player_count = save_player_pos(game, map[game->row], game->row, player_count);
+		game->row++;
 	}
-	game->row = row;
 	if (player_count != 1)
 		clean_exit(game, ERR_PLAYER_COUNT, map);
-	map_copy = ft_arrdup(map);
+	map_copy = ft_arrdup(map, game->col);
 	if (!map_copy)
 		clean_exit(game, ERR_MALLOC, map);
-	if (!is_map_enclosed(game, map_copy, row))
+	if (!is_map_enclosed(game, map_copy, game->row))
 	{
 		ft_free_arr(map_copy);
 		clean_exit(game, ERR_MAP_INVALID, map);

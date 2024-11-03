@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   safe_mlx.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hzibari <hzibari@student.hive.fi>          +#+  +:+       +#+        */
+/*   By: kmatjuhi <kmatjuhi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 14:13:46 by kmatjuhi          #+#    #+#             */
-/*   Updated: 2024/10/28 13:54:16 by hzibari          ###   ########.fr       */
+/*   Updated: 2024/11/03 09:32:28 by kmatjuhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,8 @@
 
 mlx_t	*safe_mlx_init(t_struct *game)
 {
-	mlx_t	*mlx;
-
-	mlx = mlx_init(S_W, S_H, "Cub3D", 1);
-	if (!mlx)
+	game->mlx = mlx_init(S_W, S_H, "Cub3D", 1);
+	if (!game->mlx)
 	{
 		free(game->content);
 		ft_free_arr(game->map);
@@ -25,7 +23,6 @@ mlx_t	*safe_mlx_init(t_struct *game)
 		ft_putendl_fd(ERR_MLX, 2);
 		exit(EXIT_FAILURE);
 	}
-	return (mlx);
 }
 
 void	safe_mlx_terminate(t_struct *game)
@@ -34,6 +31,18 @@ void	safe_mlx_terminate(t_struct *game)
 	free(game->content);
 	ft_free_arr(game->map);
 	free_elements(&(game->elem));
+	if (game->texture)
+	{
+		if (game->texture->south)
+			mlx_delete_texture(game->texture->south);
+		if (game->texture->north)
+			mlx_delete_texture(game->texture->north);
+		if (game->texture->east)
+			mlx_delete_texture(game->texture->east);
+		if (game->texture->west)
+			mlx_delete_texture(game->texture->west);
+		free(game->texture);
+	}
 	if (game->ray)
 		free(game->ray);
 }

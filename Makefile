@@ -6,7 +6,7 @@
 #    By: kmatjuhi <kmatjuhi@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/05 15:16:43 by kmatjuhi          #+#    #+#              #
-#    Updated: 2024/10/29 11:11:06 by kmatjuhi         ###   ########.fr        #
+#    Updated: 2024/11/01 10:48:00 by kmatjuhi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,6 +46,7 @@ SRCS			=	main.c \
 					arr_pop.c \
 					validate_map.c \
 					validate_elems.c \
+					validate_color.c \
 					flood_fill.c \
 					ft_arrdup.c \
 					ray_utils.c \
@@ -83,6 +84,7 @@ $(MLX42):
 clean:
 	@rm -rf $(OBJ_DIR)
 	@rm -rf cub.dSYM
+	rm MLX42/build/CMakeCache.txt
 	make clean -C libft
 	make clean -C MLX42/build
 	@echo "[$(NAME)] Object files cleaned."

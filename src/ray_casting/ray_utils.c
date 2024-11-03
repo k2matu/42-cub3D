@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hzibari <hzibari@student.hive.fi>          +#+  +:+       +#+        */
+/*   By: kmatjuhi <kmatjuhi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/25 14:18:41 by halgordziba       #+#    #+#             */
-/*   Updated: 2024/10/31 15:43:22 by hzibari          ###   ########.fr       */
+/*   Updated: 2024/11/01 09:43:18 by kmatjuhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,4 +73,13 @@ int	check_wall_hit(t_struct *game, float x_inter, float y_inter)
 	if (game->map[y_wall][x_wall] == '1')
 		return (1);
 	return (0);
+}
+
+float	nor_angle(float angle)
+{
+	if (angle < 0)
+		angle += (2 * M_PI);
+	if (angle > (2 * M_PI))
+		angle -= (2 * M_PI);
+	return (angle);
 }

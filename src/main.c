@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hzibari <hzibari@student.hive.fi>          +#+  +:+       +#+        */
+/*   By: kmatjuhi <kmatjuhi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/05 15:31:32 by kmatjuhi          #+#    #+#             */
-/*   Updated: 2024/10/31 15:42:05 by hzibari          ###   ########.fr       */
+/*   Updated: 2024/11/03 09:34:50 by kmatjuhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,15 +35,6 @@ void	init_player(t_struct *game)
 	game->ray->ray_angle = 0;
 }
 
-float	nor_angle(float angle)
-{
-	if (angle < 0)
-		angle += (2 * M_PI);
-	if (angle > (2 * M_PI))
-		angle -= (2 * M_PI);
-	return (angle);
-}
-
 static void	init_texture(t_struct *game)
 {
 	game->texture = ft_calloc(1, sizeof(t_texture));
@@ -68,8 +59,8 @@ static void	init_texture(t_struct *game)
 
 void	game_loop(void *param)
 {
-	t_struct *game;
-	
+	t_struct	*game;
+
 	game = param;
 	mlx_delete_image(game->mlx, game->img);
 	game->img = mlx_new_image(game->mlx, S_W, S_H);
@@ -82,7 +73,7 @@ int	main(int argc, char **argv)
 	static t_struct	game;
 
 	parse(argc, argv, &game);
-	game.mlx = safe_mlx_init(&game);
+	safe_mlx_init(&game);
 	init_player(&game);
 	init_texture(&game);
 	mlx_key_hook(game.mlx, key_press, &game);

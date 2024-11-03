@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render_wall.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hzibari <hzibari@student.hive.fi>          +#+  +:+       +#+        */
+/*   By: kmatjuhi <kmatjuhi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 09:46:47 by kmatjuhi          #+#    #+#             */
-/*   Updated: 2024/10/31 16:46:05 by hzibari          ###   ########.fr       */
+/*   Updated: 2024/11/03 07:57:50 by kmatjuhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,10 +84,10 @@ void	render_wall(t_struct *game, int ray, float distance)
 	wall_h = TILE_SIZE / distance * dist_player;
 	bottom_pxl = (S_H / 2) + (wall_h / 2);
 	top_pxl = (S_H / 2) - (wall_h / 2);
-	// if (bottom_pxl > S_H)
-	// 	bottom_pxl = S_H;
-	// if (top_pxl < 0)
-	// 	top_pxl = 0;
+	if (bottom_pxl > S_H)
+		bottom_pxl = S_H;
+	if (top_pxl < 0)
+		top_pxl = 0;
 	draw_wall(game, ray, top_pxl, bottom_pxl);
 	draw_floor_ceiling(game, ray, top_pxl, bottom_pxl);
 }

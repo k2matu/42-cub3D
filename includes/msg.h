@@ -6,7 +6,7 @@
 /*   By: kmatjuhi <kmatjuhi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/30 09:16:31 by kmatjuhi          #+#    #+#             */
-/*   Updated: 2024/10/29 20:08:27 by kmatjuhi         ###   ########.fr       */
+/*   Updated: 2024/11/02 12:35:58 by kmatjuhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,5 +27,7 @@
 
 # define ERR_MLX "Error\nFailed to initialize MLX42"
 # define ERR_MLX_TEXTURE "Error\nMlx texture failed"
+
+# define GAME_CLOSED "Game closed. ESC was pressed\n"
 
 #endif
