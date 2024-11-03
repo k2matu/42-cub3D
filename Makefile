@@ -6,7 +6,7 @@
 #    By: kmatjuhi <kmatjuhi@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/05 15:16:43 by kmatjuhi          #+#    #+#              #
-#    Updated: 2024/11/01 10:48:00 by kmatjuhi         ###   ########.fr        #
+#    Updated: 2024/11/03 09:46:42 by kmatjuhi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@
 # COMPILATION
 ################################################################################
 CC				=	cc
-# CC_FLAGS		=	-Wall -Wextra -Werror
+CC_FLAGS		=	-Wall -Wextra -Werror
 DB_FLAGS		=	-g
 INCLUDE_FLAGS	=	-I $(INCLUDES) -I ./libft -I ./MLX42/include/MLX42 -I ./usr/include/GLFW
 MLX42_FLAGS		=	-Iinclude -lglfw -L"/Users/$(USER)/.brew/opt/glfw/lib/"
@@ -51,7 +51,8 @@ SRCS			=	main.c \
 					ft_arrdup.c \
 					ray_utils.c \
 					ray.c \
-					key_press_moves.c \
+					key_press.c \
+					move.c \
 					render_wall.c
 
 OBJECTS			=	$(addprefix $(OBJ_DIR)/, $(SRCS:%.c=%.o))
@@ -59,7 +60,7 @@ OBJECTS			=	$(addprefix $(OBJ_DIR)/, $(SRCS:%.c=%.o))
 ################################################################################
 # RULES
 ################################################################################
-vpath %.c $(SRC_DIR) $(SRC_DIR)/parse $(SRC_DIR)/safe_func $(SRC_DIR)/ray_casting
+vpath %.c $(SRC_DIR) $(SRC_DIR)/parse $(SRC_DIR)/safe_func $(SRC_DIR)/ray_casting $(SRC_DIR)/move
 
 all: $(NAME)
 

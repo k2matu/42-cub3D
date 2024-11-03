@@ -6,7 +6,7 @@
 /*   By: kmatjuhi <kmatjuhi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 09:46:47 by kmatjuhi          #+#    #+#             */
-/*   Updated: 2024/11/03 07:57:50 by kmatjuhi         ###   ########.fr       */
+/*   Updated: 2024/11/03 09:52:57 by kmatjuhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,6 @@ void	render_wall(t_struct *game, int ray, float distance)
 	double	wall_h;
 	double	bottom_pxl;
 	double	top_pxl;
-	double	wall_hit_x;
 
 	distance *= cos(game->ray->ray_angle - game->ray->player_angle);
 	dist_player = (S_W / 2) / tan((game->ray->fov_radians) / 2);

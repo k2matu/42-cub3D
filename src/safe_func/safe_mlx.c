@@ -6,13 +6,13 @@
 /*   By: kmatjuhi <kmatjuhi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 14:13:46 by kmatjuhi          #+#    #+#             */
-/*   Updated: 2024/11/03 09:32:28 by kmatjuhi         ###   ########.fr       */
+/*   Updated: 2024/11/03 09:48:44 by kmatjuhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-mlx_t	*safe_mlx_init(t_struct *game)
+void	safe_mlx_init(t_struct *game)
 {
 	game->mlx = mlx_init(S_W, S_H, "Cub3D", 1);
 	if (!game->mlx)

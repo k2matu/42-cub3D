@@ -6,7 +6,7 @@
 /*   By: kmatjuhi <kmatjuhi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/06 11:38:57 by kmatjuhi          #+#    #+#             */
-/*   Updated: 2024/11/01 11:48:42 by kmatjuhi         ###   ########.fr       */
+/*   Updated: 2024/11/03 09:41:56 by kmatjuhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,8 @@ void	validate_map(t_struct *game, char **map)
 	{
 		if (!ft_match(map[game->row], "01NSEW "))
 			clean_exit(game, ERR_MAP_CHAR, map);
-		player_count = save_player_pos(game, map[game->row], game->row, player_count);
+		player_count = save_player_pos(game, map[game->row], game->row, 
+				player_count);
 		game->row++;
 	}
 	if (player_count != 1)

@@ -6,7 +6,7 @@
 /*   By: kmatjuhi <kmatjuhi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 22:03:35 by kmatjuhi          #+#    #+#             */
-/*   Updated: 2024/11/01 11:07:08 by kmatjuhi         ###   ########.fr       */
+/*   Updated: 2024/11/03 09:49:02 by kmatjuhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@
 # define FOV 60
 # define MOVE_SPEED 0.9
 # define ROTATE_SPEED 0.05
-# define M_PI 3.14159265358979323846
 
 typedef struct s_element
 {
@@ -102,10 +101,8 @@ int		safe_open(char *str);
 ssize_t	safe_read(int fd, char *dest, ssize_t size, bool is_malloced);
 
 /* safe_mlx */
-mlx_t	*safe_mlx_init(t_struct *game);
+void	safe_mlx_init(t_struct *game);
 void	safe_mlx_terminate(t_struct *game);
-
-float	nor_angle(float angle);
 
 /* ray funtions */
 void	raycasting(t_struct *game);
@@ -113,8 +110,13 @@ void	fix_inters_for_y(t_struct *game, float *y_inter, float *x_inter);
 void	fix_inters_for_x(t_struct *game, float *y_inter, float *x_inter);
 int		check_wall_hit(t_struct *game, float x_inter, float y_inter);
 void	render_wall(t_struct *game, int ray, float distance);
+float	nor_angle(float angle);
 
 /* key press movements */
 void	key_press(mlx_key_data_t keydata, void *param);
+void	move_right(t_struct *game);
+void	move_left(t_struct *game);
+void	move_down(t_struct *game);
+void	move_up(t_struct *game);
 
 #endif
