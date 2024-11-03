@@ -6,7 +6,7 @@
 /*   By: kmatjuhi <kmatjuhi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/05 09:39:45 by kmatjuhi          #+#    #+#             */
-/*   Updated: 2024/11/01 10:12:20 by kmatjuhi         ###   ########.fr       */
+/*   Updated: 2024/11/03 10:23:30 by kmatjuhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,8 @@ static void	save_elem(char **dst, char *src, t_struct *game, char **content2d)
 {
 	while (*src == ' ')
 		src++;
-	*dst = ft_strdup(src);
+	if (*dst == NULL)
+		*dst = ft_strdup(src);
 	if (!*dst)
 		clean_exit(game, ERR_MALLOC, content2d);
 }

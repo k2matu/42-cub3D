@@ -6,7 +6,7 @@
 #    By: kmatjuhi <kmatjuhi@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/05 15:16:43 by kmatjuhi          #+#    #+#              #
-#    Updated: 2024/11/03 09:46:42 by kmatjuhi         ###   ########.fr        #
+#    Updated: 2024/11/03 10:28:46 by kmatjuhi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -60,7 +60,7 @@ OBJECTS			=	$(addprefix $(OBJ_DIR)/, $(SRCS:%.c=%.o))
 ################################################################################
 # RULES
 ################################################################################
-vpath %.c $(SRC_DIR) $(SRC_DIR)/parse $(SRC_DIR)/safe_func $(SRC_DIR)/ray_casting $(SRC_DIR)/move
+vpath %.c $(SRC_DIR) $(SRC_DIR)/parse $(SRC_DIR)/utils $(SRC_DIR)/ray_casting $(SRC_DIR)/move
 
 all: $(NAME)
 
@@ -85,7 +85,7 @@ $(MLX42):
 clean:
 	@rm -rf $(OBJ_DIR)
 	@rm -rf cub.dSYM
-	rm MLX42/build/CMakeCache.txt
+	# rm MLX42/build/CMakeCache.txt
 	make clean -C libft
 	make clean -C MLX42/build
 	@echo "[$(NAME)] Object files cleaned."

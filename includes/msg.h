@@ -6,7 +6,7 @@
 /*   By: kmatjuhi <kmatjuhi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/30 09:16:31 by kmatjuhi          #+#    #+#             */
-/*   Updated: 2024/11/02 12:35:58 by kmatjuhi         ###   ########.fr       */
+/*   Updated: 2024/11/03 10:14:51 by kmatjuhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 
 # define ERR_FILE_NOT_CUB "Error\nNot a .cub file"
 # define ERR_FILE_NOT_PNG "Error\nNot an .png file"
-# define ERR_ELEM_MISSING "Error\nMissing element(s)"
+# define ERR_ELEM_MISSING "Error\nMissing or too many element(s)"
 # define ERR_ELEM_INVALID "Error\nInvalid element(s)"
 # define ERR_MAP_CHAR "Error\nInvalid map character(s)"
 # define ERR_PLAYER_COUNT "Error\nInvalid player count"
