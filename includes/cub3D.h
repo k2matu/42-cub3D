@@ -6,7 +6,7 @@
 /*   By: hzibari <hzibari@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 22:03:35 by kmatjuhi          #+#    #+#             */
-/*   Updated: 2024/10/31 16:50:29 by hzibari          ###   ########.fr       */
+/*   Updated: 2024/11/04 15:25:38 by hzibari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,10 @@ typedef struct s_ray
 	float	x_step;
 	float	y_step;
 	float	fov_radians;
+	float	x_hit;
+	float	y_hit;
+	float	xx_hit;
+	float	yy_hit;
 	int		flag;
 }	t_ray;
 

@@ -6,7 +6,7 @@
 /*   By: hzibari <hzibari@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 19:04:54 by halgordziba       #+#    #+#             */
-/*   Updated: 2024/10/28 16:05:35 by hzibari          ###   ########.fr       */
+/*   Updated: 2024/11/04 15:25:54 by hzibari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ float	check_y_hits(t_struct *game)
 		y_inter += game->ray->y_step;
 		x_inter += game->ray->x_step;
 	}
+	game->ray->xx_hit = x_inter;
+	game->ray->yy_hit = y_inter;
 	return (sqrt(pow(x_inter - game->ray->pixel_pos_x, 2)
 			+ pow(y_inter - game->ray->pixel_pos_y, 2)));
 }
@@ -46,6 +48,8 @@ float	check_x_hits(t_struct *game)
 		y_inter += game->ray->y_step;
 		x_inter += game->ray->x_step;
 	}
+	game->ray->x_hit = x_inter;
+	game->ray->y_hit = y_inter;
 	return (sqrt(pow(x_inter - game->ray->pixel_pos_x, 2)
 			+ pow(y_inter - game->ray->pixel_pos_y, 2)));
 }

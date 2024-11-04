@@ -6,7 +6,7 @@
 /*   By: hzibari <hzibari@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 09:46:47 by kmatjuhi          #+#    #+#             */
-/*   Updated: 2024/10/31 16:46:05 by hzibari          ###   ########.fr       */
+/*   Updated: 2024/11/04 15:41:47 by hzibari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,27 +31,65 @@ mlx_texture_t	*get_texture(t_struct *game)
 	}
 }
 
-void	draw_wall(t_struct *game, int ray, int top_pxl, int bottom_pxl)
-{
-	mlx_texture_t	*texture;
-	double			texture_step;
-	double			y_texture;
-	int				x_texture;
-	int				color;
+// void	draw_wall(t_struct *game, int ray, int top_pxl, int bottom_pxl)
+// {
+// 	mlx_texture_t	*texture;
+// 	double			texture_step;
+// 	double			y_texture;
+// 	int				x_texture;
+// 	int				color;
 
-	y_texture = 0;
-	texture = get_texture(game);
-	texture_step = (double)texture->height / (bottom_pxl - top_pxl);
-	x_texture = ray % texture->width;
-	while (top_pxl < bottom_pxl)
+// 	y_texture = 0;
+// 	texture = get_texture(game);
+// 	texture_step = (double)texture->height / (bottom_pxl - top_pxl);
+// 	x_texture = ray % texture->width;
+// 	while (top_pxl < bottom_pxl)
+// 	{
+// 		color = *((uint32_t *)texture->pixels + 
+// 				((int)y_texture * texture->width) + x_texture);
+// 		if (!(ray < 0 || ray >= S_W || top_pxl < 0 || top_pxl >= S_H))
+// 			mlx_put_pixel(game->img, ray, top_pxl, color);
+// 		top_pxl++;
+// 		y_texture += texture_step;
+// 	}
+// }
+
+void draw_wall(t_struct *game, int ray, int top_pxl, int bottom_pxl) {
+    mlx_texture_t *texture;
+    double texture_step;
+    double y_texture;
+    int x_texture;
+    int color;
+	double wall_hit_x;
+	double wall_hit_y;
+
+    y_texture = 0;
+    texture = get_texture(game);
+    texture_step = (double)texture->height / (bottom_pxl - top_pxl);
+
+	if(game->ray->flag == 0)
 	{
-		color = *((uint32_t *)texture->pixels + 
-				((int)y_texture * texture->width) + x_texture);
-		if (!(ray < 0 || ray >= S_W || top_pxl < 0 || top_pxl >= S_H))
-			mlx_put_pixel(game->img, ray, top_pxl, color);
-		top_pxl++;
-		y_texture += texture_step;
+    // Calculate x_texture based on wall hit position in world space
+    	wall_hit_x = game->ray->x_hit; // Example: x position where the ray hit the wall
+    	wall_hit_y = game->ray->y_hit; // Example: y position where the ray hit the wall
 	}
+	else{
+    	wall_hit_x = game->ray->xx_hit; // Example: x position where the ray hit the wall
+    	wall_hit_y = game->ray->yy_hit; // Example: y position where the ray hit the wall		
+	}
+
+    // Anchor x_texture to the world coordinates, adjusted to the texture width
+    x_texture = (int)((wall_hit_x - ((int)(wall_hit_x / TILE_SIZE) * TILE_SIZE)) * (texture->width / (double)TILE_SIZE));
+
+    // Draw the wall slice
+    while (top_pxl < bottom_pxl) {
+        color = *((uint32_t *)texture->pixels + ((int)y_texture * texture->width) + x_texture);
+        if (!(ray < 0 || ray >= S_W || top_pxl < 0 || top_pxl >= S_H)) {
+            mlx_put_pixel(game->img, ray, top_pxl, color);
+        }
+        top_pxl++;
+        y_texture += texture_step;
+    }
 }
 
 void	draw_floor_ceiling(t_struct *game, int ray, int top_pxl, int bottom_pxl)
@@ -77,17 +115,12 @@ void	render_wall(t_struct *game, int ray, float distance)
 	double	wall_h;
 	double	bottom_pxl;
 	double	top_pxl;
-	double	wall_hit_x;
 
 	distance *= cos(game->ray->ray_angle - game->ray->player_angle);
 	dist_player = (S_W / 2) / tan((game->ray->fov_radians) / 2);
 	wall_h = TILE_SIZE / distance * dist_player;
 	bottom_pxl = (S_H / 2) + (wall_h / 2);
 	top_pxl = (S_H / 2) - (wall_h / 2);
-	// if (bottom_pxl > S_H)
-	// 	bottom_pxl = S_H;
-	// if (top_pxl < 0)
-	// 	top_pxl = 0;
 	draw_wall(game, ray, top_pxl, bottom_pxl);
 	draw_floor_ceiling(game, ray, top_pxl, bottom_pxl);
 }
