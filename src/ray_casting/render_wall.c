@@ -6,7 +6,7 @@
 /*   By: kmatjuhi <kmatjuhi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 09:46:47 by kmatjuhi          #+#    #+#             */
-/*   Updated: 2024/11/04 15:58:37 by kmatjuhi         ###   ########.fr       */
+/*   Updated: 2024/11/04 16:12:39 by kmatjuhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@ mlx_texture_t	*get_texture(t_struct *game)
 {
 	if (game->ray->flag == 0)
 	{
-		if (game->ray->ray_angle > M_PI / 2 && 
-			game->ray->ray_angle < 3 * (M_PI / 2))
+		if (game->ray->ray_angle > M_PI / 2
+			&& game->ray->ray_angle < 3 * (M_PI / 2))
 			return (game->texture->west);
 		else
 			return (game->texture->east);
@@ -31,31 +31,32 @@ mlx_texture_t	*get_texture(t_struct *game)
 	}
 }
 
-void draw_wall(t_struct *game, int ray, int top_pxl, int bottom_pxl) {
-    mlx_texture_t *texture;
-    double texture_step;
-    double y_texture;
-    int x_texture;
-    int color;
-	double wall_hit_x;
+void	draw_wall(t_struct *game, int ray, int top_pxl, int bottom_pxl)
+{
+	mlx_texture_t	*texture;
+	double			texture_step;
+	double			y_texture;
+	int				x_texture;
+	int				color;
 
-    y_texture = 0;
-    texture = get_texture(game);
-    texture_step = (double)texture->height / (bottom_pxl - top_pxl);
+	y_texture = 0;
+	texture = get_texture(game);
+	texture_step = (double)texture->height / (bottom_pxl - top_pxl);
 	if (game->ray->flag == 0)
-    	wall_hit_x = game->ray->y_hit;
+		game->ray->wall_x = game->ray->y_hit;
 	else
-	   	wall_hit_x = game->ray->x_hit;
-    x_texture = (int)((wall_hit_x - ((int)(wall_hit_x / TILE_SIZE) * TILE_SIZE)) * (texture->width / (double)TILE_SIZE));
-
-    while (top_pxl < bottom_pxl) {
-        color = *((uint32_t *)texture->pixels + ((int)y_texture * texture->width) + x_texture);
-        if (!(ray < 0 || ray >= S_W || top_pxl < 0 || top_pxl >= S_H)) {
-            mlx_put_pixel(game->img, ray, top_pxl, color);
-        }
-        top_pxl++;
-        y_texture += texture_step;
-    }
+		game->ray->wall_x = game->ray->x_hit;
+	x_texture = (int)((game->ray->wall_x - ((int)(game->ray->wall_x / TILE_SIZE)
+					* TILE_SIZE)) * (texture->width / (double)TILE_SIZE));
+	while (top_pxl < bottom_pxl)
+	{
+		color = *((uint32_t *)texture->pixels
+				+ ((int)y_texture * texture->width) + x_texture);
+		if (!(ray < 0 || ray >= S_W || top_pxl < 0 || top_pxl >= S_H))
+			mlx_put_pixel(game->img, ray, top_pxl, color);
+		top_pxl++;
+		y_texture += texture_step;
+	}
 }
 
 void	draw_floor_ceiling(t_struct *game, int ray, int top_pxl, int bottom_pxl)
@@ -87,10 +88,6 @@ void	render_wall(t_struct *game, int ray, float distance)
 	wall_h = TILE_SIZE / distance * dist_player;
 	bottom_pxl = (S_H / 2) + (wall_h / 2);
 	top_pxl = (S_H / 2) - (wall_h / 2);
-	// if (bottom_pxl > S_H)
-	// 	bottom_pxl = S_H;
-	// if (top_pxl < 0)
-	// 	top_pxl = 0;
 	draw_wall(game, ray, top_pxl, bottom_pxl);
 	draw_floor_ceiling(game, ray, top_pxl, bottom_pxl);
 }

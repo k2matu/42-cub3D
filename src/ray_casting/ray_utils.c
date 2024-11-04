@@ -6,7 +6,7 @@
 /*   By: kmatjuhi <kmatjuhi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/25 14:18:41 by halgordziba       #+#    #+#             */
-/*   Updated: 2024/11/01 09:43:18 by kmatjuhi         ###   ########.fr       */
+/*   Updated: 2024/11/04 16:26:22 by kmatjuhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,8 @@ int	check_wall_hit(t_struct *game, float x_inter, float y_inter)
 		x_inter += 0.001;
 	y_wall = floor (y_inter / TILE_SIZE);
 	x_wall = floor (x_inter / TILE_SIZE);
-	if (y_wall < 0 || y_wall >= game->row || x_wall < 0 || x_wall >= game->col)
+	if (y_wall < 0 || y_wall >= game->row || x_wall < 0
+		|| x_wall >= (int)ft_strlen(game->map[y_wall]))
 		return (1);
 	if (game->map[y_wall][x_wall] == '1')
 		return (1);

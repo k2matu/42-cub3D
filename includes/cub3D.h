@@ -6,7 +6,7 @@
 /*   By: kmatjuhi <kmatjuhi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 22:03:35 by kmatjuhi          #+#    #+#             */
-/*   Updated: 2024/11/04 15:57:30 by kmatjuhi         ###   ########.fr       */
+/*   Updated: 2024/11/04 16:10:55 by kmatjuhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,7 @@ typedef struct s_ray
 	int		flag;
 	float	x_hit;
 	float	y_hit;
+	double	wall_x;
 }	t_ray;
 
 typedef struct s_struct

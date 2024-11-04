@@ -6,7 +6,7 @@
 /*   By: kmatjuhi <kmatjuhi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/05 15:31:32 by kmatjuhi          #+#    #+#             */
-/*   Updated: 2024/11/03 09:34:50 by kmatjuhi         ###   ########.fr       */
+/*   Updated: 2024/11/04 16:00:21 by kmatjuhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ static void	init_texture(t_struct *game)
 	game->texture->north = mlx_load_png(game->elem.north);
 	game->texture->east = mlx_load_png(game->elem.east);
 	game->texture->west = mlx_load_png(game->elem.west);
-	if (!game->texture->south || !game->texture->north || !game->texture->east 
+	if (!game->texture->south || !game->texture->north || !game->texture->east
 		|| !game->texture->west)
 	{
 		safe_mlx_terminate(game);
