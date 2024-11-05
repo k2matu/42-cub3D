@@ -1,10 +1,10 @@
 NO textures/Mona_Lisa.png
 SO textures/Impression_Sunrise.png
 WE textures/the_starry_night.png
-EA  textures/east.png
+EA textures/Sunflowers.png   
 
 
-F 0, 0, 60
+F 0, 0, 0
 C 60,179,110
 
 

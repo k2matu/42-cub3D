@@ -6,7 +6,7 @@
 /*   By: kmatjuhi <kmatjuhi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 22:03:35 by kmatjuhi          #+#    #+#             */
-/*   Updated: 2024/11/04 16:10:55 by kmatjuhi         ###   ########.fr       */
+/*   Updated: 2024/11/05 13:20:19 by kmatjuhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,6 +102,7 @@ int		validate_color(t_struct *game, char *elem);
 /* safe_func */
 int		safe_open(char *str);
 ssize_t	safe_read(int fd, char *dest, ssize_t size, bool is_malloced);
+void	safe_open_file(t_struct *game, char *str);
 
 /* safe_mlx */
 void	safe_mlx_init(t_struct *game);

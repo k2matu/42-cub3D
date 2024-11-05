@@ -6,7 +6,7 @@
 /*   By: kmatjuhi <kmatjuhi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/30 08:27:12 by kmatjuhi          #+#    #+#             */
-/*   Updated: 2024/11/01 10:02:41 by kmatjuhi         ###   ########.fr       */
+/*   Updated: 2024/11/05 13:24:48 by kmatjuhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,4 +42,20 @@ ssize_t	safe_read(int fd, char *dest, ssize_t size, bool is_malloced)
 		exit(EXIT_FAILURE);
 	}
 	return (bytes_read);
+}
+
+void	safe_open_file(t_struct *game, char *str)
+{
+	int	fd;
+
+	fd = open(str, O_RDONLY);
+	if (fd == -1)
+		clean_exit(game, ERR_OPEN_FILE, game->map);
+	close(fd);
+	fd = open(str, O_DIRECTORY);
+	if (fd != -1)
+	{
+		close(fd);
+		clean_exit(game, ERR_IS_DIR, game->map);
+	}
 }

@@ -6,7 +6,7 @@
 /*   By: kmatjuhi <kmatjuhi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/01 10:43:42 by kmatjuhi          #+#    #+#             */
-/*   Updated: 2024/11/03 09:41:38 by kmatjuhi         ###   ########.fr       */
+/*   Updated: 2024/11/05 13:25:55 by kmatjuhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ static void	check_color_range(t_struct *game, char **arr)
 			clean_exit(game, ERR_RGB_VAL, game->map);
 		}
 		rgb = ft_atoi(arr[i]);
-		if (rgb > 255 || rgb < 0 || !is_num(arr[i]))
+		if (arr[i][0] == '\0' || rgb > 255 || rgb < 0 || !is_num(arr[i]))
 			is_valid = false;
 		i++;
 	}
@@ -67,6 +67,32 @@ static int	convert_color_rgba(char **arr)
 	return (color);
 }
 
+static void	validate_comma(t_struct *game, char *elem)
+{
+	int	i;
+	int	count;
+
+	i = 0;
+	count = 0;
+	while (elem[i] == ' ')
+		i++;
+	if (elem[i] == ',')
+		clean_exit(game, ERR_ELEM_INVALID, game->map);
+	while (elem[i])
+	{
+		if (elem[i] == ',')
+			count++;
+		i++;
+	}
+	if (count != 2)
+		clean_exit(game, ERR_ELEM_INVALID, game->map);
+	i--;
+	while (elem[i] == ' ')
+		i--;
+	if (elem[i] == ',')
+		clean_exit(game, ERR_ELEM_INVALID, game->map);
+}
+
 int	validate_color(t_struct *game, char *elem)
 {
 	char	**rgb_char;
@@ -74,6 +100,7 @@ int	validate_color(t_struct *game, char *elem)
 	int		color;
 
 	i = 0;
+	validate_comma(game, elem);
 	rgb_char = ft_split(elem, ',');
 	if (!rgb_char)
 		clean_exit(game, ERR_MALLOC, game->map);

@@ -6,7 +6,7 @@
 /*   By: kmatjuhi <kmatjuhi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/30 09:16:31 by kmatjuhi          #+#    #+#             */
-/*   Updated: 2024/11/03 10:14:51 by kmatjuhi         ###   ########.fr       */
+/*   Updated: 2024/11/05 13:19:55 by kmatjuhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@
 # define ERR_CALLOC "Calloc failed"
 
 # define ERR_FILE_NOT_CUB "Error\nNot a .cub file"
+# define ERR_OPEN_FILE "Error\nFailed to open file"
+# define ERR_IS_DIR "Error\nIs a directory"
 # define ERR_FILE_NOT_PNG "Error\nNot an .png file"
 # define ERR_ELEM_MISSING "Error\nMissing or too many element(s)"
 # define ERR_ELEM_INVALID "Error\nInvalid element(s)"
