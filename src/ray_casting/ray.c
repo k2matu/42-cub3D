@@ -6,7 +6,7 @@
 /*   By: kmatjuhi <kmatjuhi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 19:04:54 by halgordziba       #+#    #+#             */
-/*   Updated: 2024/11/04 16:01:51 by kmatjuhi         ###   ########.fr       */
+/*   Updated: 2024/11/05 14:00:34 by kmatjuhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 float	check_y_hits(t_struct *game)
 {
-	float	y_inter;
-	float	x_inter;
+	double	y_inter;
+	double	x_inter;
 
 	game->ray->y_step = TILE_SIZE;
 	game->ray->x_step = TILE_SIZE / tan(game->ray->ray_angle);
@@ -34,8 +34,8 @@ float	check_y_hits(t_struct *game)
 
 float	check_x_hits(t_struct *game)
 {
-	float	y_inter;
-	float	x_inter;
+	double	y_inter;
+	double	x_inter;
 
 	game->ray->y_step = TILE_SIZE * tan(game->ray->ray_angle);
 	game->ray->x_step = TILE_SIZE;

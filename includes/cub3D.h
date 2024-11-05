@@ -6,7 +6,7 @@
 /*   By: kmatjuhi <kmatjuhi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 22:03:35 by kmatjuhi          #+#    #+#             */
-/*   Updated: 2024/11/05 13:20:19 by kmatjuhi         ###   ########.fr       */
+/*   Updated: 2024/11/05 14:03:12 by kmatjuhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,10 @@
 # include "msg.h"
 # include <math.h>
 
-# define S_W 2000
-# define S_H 1500
-# define TILE_SIZE 10
+# define S_W 1800
+# define S_H 1000
+# define TILE_SIZE 30
+# define BUFFER_DISTANCE 2
 # define FOV 60
 # define MOVE_SPEED 0.9
 # define ROTATE_SPEED 0.05
@@ -110,9 +111,9 @@ void	safe_mlx_terminate(t_struct *game);
 
 /* ray funtions */
 void	raycasting(t_struct *game);
-void	fix_inters_for_y(t_struct *game, float *y_inter, float *x_inter);
-void	fix_inters_for_x(t_struct *game, float *y_inter, float *x_inter);
-int		check_wall_hit(t_struct *game, float x_inter, float y_inter);
+void	fix_inters_for_y(t_struct *game, double *y_inter, double *x_inter);
+void	fix_inters_for_x(t_struct *game, double *y_inter, double *x_inter);
+int		check_wall_hit(t_struct *game, double x_inter, double y_inter);
 void	render_wall(t_struct *game, int ray, float distance);
 float	nor_angle(float angle);
 
