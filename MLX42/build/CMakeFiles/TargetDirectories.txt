@@ -1,7 +1,7 @@
-/home/kmatjuhi/the_real/MLX42/build/CMakeFiles/mlx42.dir
-/home/kmatjuhi/the_real/MLX42/build/CMakeFiles/edit_cache.dir
-/home/kmatjuhi/the_real/MLX42/build/CMakeFiles/rebuild_cache.dir
-/home/kmatjuhi/the_real/MLX42/build/CMakeFiles/list_install_components.dir
-/home/kmatjuhi/the_real/MLX42/build/CMakeFiles/install.dir
-/home/kmatjuhi/the_real/MLX42/build/CMakeFiles/install/local.dir
-/home/kmatjuhi/the_real/MLX42/build/CMakeFiles/install/strip.dir
+/home/hzibari/Desktop/test/MLX42/build/CMakeFiles/mlx42.dir
+/home/hzibari/Desktop/test/MLX42/build/CMakeFiles/edit_cache.dir
+/home/hzibari/Desktop/test/MLX42/build/CMakeFiles/rebuild_cache.dir
+/home/hzibari/Desktop/test/MLX42/build/CMakeFiles/list_install_components.dir
+/home/hzibari/Desktop/test/MLX42/build/CMakeFiles/install.dir
+/home/hzibari/Desktop/test/MLX42/build/CMakeFiles/install/local.dir
+/home/hzibari/Desktop/test/MLX42/build/CMakeFiles/install/strip.dir
