@@ -6,7 +6,7 @@
 /*   By: kmatjuhi <kmatjuhi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 10:51:21 by kmatjuhi          #+#    #+#             */
-/*   Updated: 2024/11/01 10:06:37 by kmatjuhi         ###   ########.fr       */
+/*   Updated: 2024/11/14 21:01:19 by kmatjuhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,12 @@ char	**save_file_content(t_struct *game, char *str)
 	char	**content2d;
 
 	game->content = read_file(str);
+	if (game->content[0] == '\0')
+	{
+		free(game->content);
+		ft_putendl_fd(ERR_IS_EMPTY, 2);
+		exit(EXIT_FAILURE);
+	}
 	content2d = ft_split(game->content, '\n');
 	if (!content2d)
 	{
