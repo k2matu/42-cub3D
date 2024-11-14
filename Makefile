@@ -6,7 +6,7 @@
 #    By: kmatjuhi <kmatjuhi@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/05 15:16:43 by kmatjuhi          #+#    #+#              #
-#    Updated: 2024/11/14 20:56:24 by kmatjuhi         ###   ########.fr        #
+#    Updated: 2024/11/14 21:12:03 by kmatjuhi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@
 # COMPILATION
 ################################################################################
 CC				=	cc
-CC_FLAGS		=	-Wall -Wextra -Werror
+# CC_FLAGS		=	-Wall -Wextra -Werror
 DB_FLAGS		=	-g
 INCLUDE_FLAGS	=	-I $(INCLUDES) -I ./libft -I ./MLX42/include/MLX42 -I ./usr/include/GLFW
 MLX42_FLAGS		=	-Iinclude -lglfw -L"/Users/$(USER)/.brew/opt/glfw/lib/"

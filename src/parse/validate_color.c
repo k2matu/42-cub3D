@@ -6,7 +6,7 @@
 /*   By: kmatjuhi <kmatjuhi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/01 10:43:42 by kmatjuhi          #+#    #+#             */
-/*   Updated: 2024/11/14 20:55:43 by kmatjuhi         ###   ########.fr       */
+/*   Updated: 2024/11/14 21:20:22 by kmatjuhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,12 @@ static void	check_color_range(t_struct *game, char **arr)
 	is_valid = true;
 	while (arr[i])
 	{
+		arr[i] = ft_strtrim(arr[i], " ");
+		if (!arr[i])
+		{
+			ft_free_arr(arr);
+			clean_exit(game, ERR_RGB_VAL, game->map);
+		}
 		rgb = ft_atoi(arr[i]);
 		if (arr[i][0] == '\0' || rgb > 255 || rgb < 0 || !is_num(arr[i]))
 			is_valid = false;

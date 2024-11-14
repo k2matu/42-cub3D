@@ -6,7 +6,7 @@
 /*   By: kmatjuhi <kmatjuhi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/27 06:53:37 by kmatjuhi          #+#    #+#             */
-/*   Updated: 2024/09/09 10:20:28 by kmatjuhi         ###   ########.fr       */
+/*   Updated: 2024/11/14 21:19:14 by kmatjuhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,13 +61,10 @@ char	*ft_strtrim(char *s1, char const *set)
 		dest = (char *)malloc(sizeof(char) * 1);
 		if (!dest)
 			return (NULL);
-	}
-	if (len <= 0)
-	{
 		dest[0] = '\0';
-		return (dest);
 	}
-	dest = ft_substr(s1, first, len);
+	else
+		dest = ft_substr(s1, first, len);
 	free(s1);
 	return (dest);
 }

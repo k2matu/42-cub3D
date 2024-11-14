@@ -6,7 +6,7 @@
 /*   By: kmatjuhi <kmatjuhi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/05 09:39:45 by kmatjuhi          #+#    #+#             */
-/*   Updated: 2024/11/04 17:01:38 by kmatjuhi         ###   ########.fr       */
+/*   Updated: 2024/11/14 21:20:35 by kmatjuhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,4 +67,5 @@ void	save_info(t_struct *game, char **content2d)
 {
 	save_elems(game, content2d);
 	game->map = save_map_rm_elems(game, content2d);
+	ft_print_arr(game->map);
 }
